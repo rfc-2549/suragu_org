@@ -1,0 +1,211 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+options: ^:{}
+#+TITLE: SURAGU - Using BSD make
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+
+* Using BSD make for your (small) project
+For questions or comments on this article feel free to reach me out at
+teru-sama [at] riseup [dot] net.
+
+Alright, so you wrote your software! Bad news kid, now you have to
+compile it! Worse than that, you have to make that the compilation is
+not a pain in the ass so more people can actually use your software!
+
+Thankfully, developers thought about on the unbearable pain of
+compiling software, and thus =make= was born. =make=, A =makefile= is
+a set of instructions that tells the software =make= how to compile
+the software. Being honest, if you're in this website you already know
+what =make= is.
+
+BSD Make (also called =bmake=) comes with interesting features that
+make writing makefiles easier. As it comes with some kind of templates
+that will surely help you at the time of writing the makefile, bsd
+makefiles tend to be readable and easily editable. Consider this
+source tree. I am adding libcurl to this example to add some
+"complexity" to the makefile.
+
+main.c:
+#+begin_src c -n -r
+  #include <stdio.h>
+
+  /* Not gonna create an header file for a simple makefile
+   ,* example.... */
+
+  void
+  get_url(const char *s);
+
+  int
+  main(void)
+  {
+       puts("getting suragu.net...");
+       get_url("suragu.net");
+  }
+#+end_src
+
+geturl.c:
+
+#+begin_src c +n
+  #include <curl/curl.h>
+
+  void
+  get_url(const char *s)
+  {
+       CURL *curl = curl_easy_init();
+       curl_easy_setopt(curl,CURLOPT_URL,s);
+       curl_easy_setopt(curl,CURLOPT_WRITEDATA,stdout);
+
+       curl_easy_perform(curl);
+
+       curl_easy_cleanup(curl);
+
+  }
+#+end_src
+
+This, the traditional Makefile would look a bit like this:
+
+Makefile:
+#+begin_src makefile -n -r
+  CC ?= cc
+  LDFLAGS = `pkg-config --cflags --libs libcurl`
+  OBJS = main.o geturl.o
+  TARGET = geturl
+
+  # Link the thing
+  all: $(OBJS)
+  $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(TARGET)
+
+  # Compile all source code to object files
+  %.o : %.c
+  $(CC) -c $(CFLAGS) $< -o $@
+
+  .PHONY clean
+  clean:
+  rm *.o $(TARGET)
+#+end_src
+
+Typing =make= will result on a working makefile, the makefile will
+compile the software as expected and not much else would happen. The
+software also works as expected, however, in my opinion =make= syntax
+makes 0 sense and it could be improved. Fortunately, this can be
+solved using the BSD make templates. Consider the following Makefile:
+
+Makefile:
+#+begin_src makefile -n -r
+  PROG   = geturl
+  SRCS   = main.c geturl.c
+  LDADD != ${PREFIX}/bin/pkg-config --cflags --libs libcurl
+  MAN    =
+
+  .include <bsd.prog.mk>
+#+end_src
+
+If you're in Linux, you might have to install =bmake=, which is a port
+of NetBSD make, it is more likely in your distro's repositories. To
+run that Makefile, just type =bmake=, and magic will happen. But let's
+explain it
+
+PROG is like the target, is what the template uses to get the
+resulting binary. If SRCS is empty, bmake will just compile
+=progname.c=.
+=SRCS= are the sources files you want to compile. And =LDADD= are the
+flags you want to pass to the linker, notice that in this case I used
+!= instead of \=, this is because when you want to assign the output of
+a comman in BSD make, you have to do !=, you can't do =SRCS =
+`pkg-config ...`= because it won't work.
+
+the =.include <bsd.prog.mk>= line makes all the magic possible. It is
+the template, and then you pass all the variables you defined before
+to that template, so the =.include= directive must be at the very
+bottom of the Makefile.
+
+Also, this simple makefiles comes with all the rules someone would
+like. "bmake clean" works, so does "bmake install".
+
+Notice how there isn't "CFLAGS" in this makefile, this is because, if
+you want to add any CFLAG, you can do it this way, and BSD make will
+understand:
+
+#+begin_src shell -n -r
+  sukamu@wakaran ~/docs/xdd $ bmake CFLAGS="-O2 -pipe -Wall -pedantic"
+  cc -pipe -O2 -pipe -Wall -pedantic           -c main.c
+  cc -pipe -O2 -pipe -Wall -pedantic           -c geturl.c
+  cc -pipe           -o geturl  main.o geturl.o  -lcurl 
+#+end_src
+
+You can specify default CFLAGS in the Makefile, but when adding CFLAGS
+in the command line, those will be overwritten.
+
+** Compilation options using BSD make
+
+configure scripts have their weird defined optins, such as
+=--enable-xxx= or =--disable-xxx=, which enables or disables features
+in the software you're compiling. This can be also be done with BSD
+make and =CFLAGS= To do this you only have to use the simple Make
+conditionals. Consider the following C source code:
+
+#+begin_src c -n -r
+  #include <stdio.h>
+
+  int main(void) {
+
+  #ifdef USE_OPTION
+       puts("This is a string that will only be printed if use-option is enabled at compile time.");
+  #endif
+       puts("Hello world!");
+
+
+
+       return 0;
+  }
+#+end_src
+
+#+begin_src makefile -n -r
+  PROG   = option
+  SRCS   = main.c
+  LDADD != ${PREFIX}/bin/pkg-config --cflags --libs libcurl
+  MAN    =
+
+  # Compilation options
+  use-option = "no"
+  .if "${use-option}" == "yes"
+  CFLAGS +="-DUSE_OPTION"
+  .endif
+
+  .include <bsd.prog.mk>
+
+#+end_src
+
+If you compile normally, nothing weird would happen:
+
+#+begin_src shell-script -n -r
+  diego@sukamu ~/xdxd $ make      
+  cc -pipe -g                   -MD            -c main.c
+  cc -pipe           -o option  main.o  -lcurl
+  diego@sukamu ~/xdxd $ make
+  Hello world!
+#+end_src
+
+Now, let's recompile with =use-option=yes=.
+
+#+begin_src shell-script -n -r
+  diego@sukamu ~/xdxd $ bmake use-option=yes
+  cc -pipe -g "-DUSE_OPTION"                   -MD            -c main.c
+  cc -pipe           -o option  main.o  -lcurl 
+  diego@sukamu ~/xdxd $ ./option
+  This is a string that will only be printed if use-option is enabled at compile time.
+  Hello world!
+#+end_src
+
+So, if you add ="use-option=yes"= to the make flags, the Makefile will
+add the required CFLAGS to enable the compile time option.
+
+** Conclusion
+
+BSD make is great for both small and big projects. And maybe more sane
+than other alternatives, as doesn't require you to write a lot of
+stuff just to build your project. BSD Make is a build system made for
+lazy people. And lazy people always come with the simplest solutions.

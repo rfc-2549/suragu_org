@@ -1,0 +1,153 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+options: ^:{}
+#+TITLE: suragu.net - Org-mode as a Static Site Generator
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+* org-mode as a Static Site Generator
+Created: 2022-06-14
+Last updated: 2022-06-14
+** Introduction
+There are a lot of static site generators out there, you can think of
+Jekyll, Hugo, sblg. Those are good (I guess) but, as I was too lazy to
+check them out, I tried to perform the same task (In this case,
+generating a website from a language in a weird markup language) that
+looks very much the same as it was written in pure html. And emacs'
+org-mode was able to do this perfectly. Not much flaws were found in
+this process.
+
+And yes, this article was written in =org-mode=.
+
+If you enjoy this article, please consider donating:
+[[https://liberapay.com/raoul11][https://liberapay.com/raoul11]]. For questions or comments on this
+article feel free to reach me out at teru-sama [at] riseup [dot] net.
+
+** The basics
+
+Every emacs users (I hope) knows about org-mode, it is a very powerful
+markup language, in my opinion, better than markdown as it uses more
+common sense, like *bold* text are written with only one asterisk and
+/italic/ text is written with slashes, which makes more sense inside
+my head than markdown's one asterisk for italic and two asterisks for
+bold. The headers are written with an asterisk followed by the text,
+and you can insert code blocks with =#+begin_src <language>=. (and close
+them with #+end_src) And
+guess what! Emacs will export the source code *highlighted* to html!
+The output colors will be defined by your *current Emacs theme*
+
+When you are finished writing your .org file, you can export it to
+html with =M-x org-html-export-to-html=. This will create a =.html= file
+with the same name of the =.org= file. You can open it and it won't be
+so much different than a =.md= file converted to =.html= using =pandoc=. But
+we can fix that using the multiple =org-mode= options!
+** org-mode options
+There are a lot of =org-mode=. You can check all of them [[https://orgmode.org/manual/Publishing-options.html][here]] and
+[[https://orgmode.org/manual/Export-Settings.html][here]]. Check them if you need an option that is not here. Pretty sure
+there's an option for whatever you want.
+
+So, when you make a website, you most likely want to make it somewhat
+artistic, so you want to add, say, a header, and a stylesheet
+file. This is possible with =org-mode= options. The following text lines
+will insert a header file and a stylesheet file into the resulting
+.html file:
+
+#+begin_src org
+#+INCLUDE: "inc/header.html" export html
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+#+end_src
+
+This will include, before everything in the =.org= file, the content of
+the file located at =inc/header.html=. And will append that <link/> HTML
+tag to the <head> section of the resulting =.html= file. So it will give
+the stylesheet to the resulting html site.
+n
+But by default =org-mode= gives us the number of headings, preambles and
+postambles, a table of contents, some html style we never asked for,
+and a lot of things we never asked for. But obviously, theres an
+option to take care of all of that!
+
+#+begin_src org
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+end_src
+
+That snippet inside the codeblock will disable all the things we don't
+want in a personal website (but maybe we want in an academic
+article?). I don't know. The thing is that you can disable or enable
+them as needed. As you should know, =nil= in emacs-lisp means =false= and
+=t= means =true=. So if you want to enable some option of those you give
+it =t= instead of =nil=.
+
+So you have to add that to all the .org files you have. You can
+probably setup those options as default by setting the family of
+=org-export= variables to =nil= as needed. But I keep it that way because
+I am too lazy to set all of those variables.
+
+Then, you have to do =M-x org-html-export-to-html= in each .org file and
+upload them to your webroot. And everything should work when you visit
+your website. If not, check if the path of the css and header is
+correct (In this post i'm assuming your .html files are in =inc/= and
+your css is in =css/styles.css=, which are both relative paths).
+** Inserting custom HTML in Org
+Something great about Markdown is that you can insert HTML by simply
+adding it as normal text. You cannot do this in org-mode. You can't
+just put <b>thing</b> and expect org-mode to compile that as html. You
+have to use an =export= block. Those work just as the codeblocks we've
+seen before. But instead of src, it's export, so it will
+be #+begin_export html. Following there's an example
+#+begin_export html
+<b style="color:red;">This is custom HTML (it has the style attribute) inserted into org-mode :D</b>
+#+end_export
+** Exporting a whole directory with .org files to html
+
+For most of the time running this website using =org-mode= as static
+site generator, i used to run =M-x org-html-export-to-html= as
+needed. But I thought this was unnecessary and repetitive and there
+wasn't really a need to do that. I wanted something like =make=. Where
+you run and you get everything compiled. And if a file didn't change,
+don't compile it again (as it isn't needed). So I asked about this in
+the #emacs irc channel:
+
+#+begin_src text
+  <sukamu> Hello, is it possible to use org-html-export-to-html in a
+  emacs lisp program to export a file? Documentation says it only
+  "exports the current buffer", But i want to export all the .org files
+  in a directory as html
+  <sukamu> (I'm using org-mode as a ssg)
+  <wgreenhouse> >  export all the .org files in a directory as html
+  <wgreenhouse>  sukamu: it sounds like you want org-publish
+  <wgreenhouse>  (info "(org) Publishing")
+#+end_src
+
+So I checked out that "=org-publish=" thing this IRC user was talking
+about. And indeed it was exactly what I needed. I had to read the
+documentation. And I came to this following emacs-lisp files which can
+compile my website just well:
+
+#+begin_src emacs-lisp
+  ;; Change this
+  (setq org-publish-project-alist
+       '(("suragu.net"
+              :base-directory "~/repos/suragu_org/"
+              :publishing-directory "~/repos/suragu_org/out_html"
+              :section-numbers nil
+              :publishing-function org-html-publish-to-html
+              :table-of-contents nil
+              :recursive t
+              )))
+
+  (defun make-suragu ()
+       (interactive)
+       (org-publish "suragu.net")
+#+end_src
+
+And that's it! Everytime I want to recompile this website I just have
+to run =M-x make-suragu= and org-publish will do the rest for me!
+** Conclusion
+=org-mode= is a great markup language that can repleace markdown in most
+tags and also works well as a static site generator. What else do you
+want me to say

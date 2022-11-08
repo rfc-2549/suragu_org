@@ -1,0 +1,131 @@
+#+INCLUDE: "inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil -:nil
+#+TITLE: suragu.net - Media I've consumed
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+#+EXPORT_FILE_NAME: media.html
+
+* Media I've consumed
+Well, someone has said, that in this world there are people for
+everything, or "it takes all sorts to make a world", so there must be
+someone interested on the media I consume and what I think about
+it. So here are music albums, movies and similar.
+
+As i'm not a professional rater, I'm not gonna rate them, in numbers,
+i'll just say what I think about the thing and that's it.
+
+Pssss. You can get some of the media listed [[https://files.suragu.net/][here]]. 
+
+** Movies
+I love the "guy who think he's cool" cinema.
+
+- *Pulp Fiction (1994)*: The movie is stupid, ridicolous and most
+  pejorative adjectives you can think of. But it's my favorite movie
+  nevertheless.
+- *Kill Bill (2003-2004)*: Good movies.
+- *Trainspotting (1996)*: Movie about [[https://concealed.world/home.php][Scottish Drug addicts]]. The thing
+  sends a Good Message. And the movie is really enjoyable.
+- *T2 Trainspotting (2017)*: Not as good as the original but still
+  passable.
+- *Ghost in the Shell (1995)*: It's the only anime movie i've
+  watched. It's pretty cyberpunk so i like it.
+- *Torrente: El brazo tonto de la ley (1997)*: Fucking funny garbage, if
+  i wasn't high i wouldn't have liked the thing.
+- *Torrente 2: Misión en Marbella*: Idem
+- *El día de la Bestia (1995)*: My favorite movie this country has made
+- *Acción mutante (1993)*: One of the movies i laughed the most
+- *Fear and loathing in Las Vegas (1998)*: I don't know what I watched
+- *Scarface (1983)*: Masterpiece.
+- *Navajeros (1980)*: Funny at times but didn't like it at all.
+- *El pico (1983)*: Way better than Navajeros and has a cool message.
+- *El pico 2 (1984)*: This one was interesting.  
+- *Scary Movie (2000):* Utter shit. But THC boosts movies.
+- *Ali G Indahouase:* ???
+- *The Godfather (1972):* Masterpiece
+- *Lady Snowblood (1973):* I loved Kill Bill. I loved this even more.
+- *The great lebowski:* Same as fear and loathing in las vegas.  
+** Videogames
+Well, now I got a decent computer in which I can play games
+decently. I have completed all the storyline of these games unless
+stated otherwhise.
+
+- *Borderlands 2:* One of my favorite games.
+- *Borderlands: The Pre-sequel*: Still playing it
+- *Milk (out|in)side a bag of milk (out|in)side a bag of milk*: Had a [[./img/funny.png][funny frame]]
+** Anime
+I'm not much of an anime watcher, but eh, sure. I'm including both
+anime shows and movies in this section.
+
+- *Serial Experiments Lain*: The anime is cool. I used to simp for Lain
+  but then I discovered I'm suragu, not a insecure, twitter user
+- *Paranoia Agent*: I remember once a linguistics teacher I had told me
+  to watch this anime. I watched it and I really enjoyed it. A good
+  satire. I have keked big to this one.
+- *Texhnolyze*: Made by the same guys that made Lain. But i enjoyed this
+  one more than Lain
+- *Haibane Renmei*: Made by the same guy as Lain and Texhnolyze, this is
+  the only media that made me cry and i have 0 problems admitting it.
+- *The curse of Kazuo Umezu*: I can't take gore animes seriously
+  because I analyze the situation, which makes me laugh
+  uncontrollably. Altough it was fun to watch.
+- *Shoujo Tsubaki (1992)* : The thing stated above doesn't apply for this
+  one. This one is actually depressing.  
+- *Belladonna of Sadness (1973)*: Masterpiece. The Japanese version of
+  Pink Floyd's The Wall. Psychedelic, deep, and weird.
+  
+** Books
+I know how to read
+
+- *Neuromancer (1984)*: A drugaddict hacker needs to make money but he
+  can't work because he stole from his bosses.
+** Music
+This shit will never be complete.
+
+- *Big Moe - City of Syrup*
+- *bôa - Twilight*
+- *CCR - Pendulum*
+- *Chief Keef - Finally Rich*
+- *Chief Keef - The Leek, Vol. 1:* Sounds like Korean Vaporwave    
+- *D.R.I. - Crossover* All songs are the same to be honest
+- *D.R.I. - Thrash zone* Cool
+- *DJ Screw - All screwed up Vol. II*
+- *DJ Screw - 3 N’ The Mornin’ Part One*
+- *DJ Screw - 3 N' The Mornin' Part Two*    
+- *DJ Screw - The Legend*
+- *Dr. Octagon - Dr. Octagonecologyst*: Kool Keith is a genius.
+- *Dr. DOOOM - First come, first served*  
+- *Denzel Curry - Melt my eyez see your future*
+- *Envidia Kotxina - Asi en la tierra komo en el zielo+*
+- *Gospel - The Moon is a Dead world*
+- *Iron Maiden - Somewhere in time* My favorite album from these dudes
+- *Kanye West - My Beautiful Dark Twisted Fantasy (2010)*
+- *Kendrick Lamar - DAMN.*
+- *Kendrick Lamar - Section.80*
+- *Kendrick Lamar - good kid, m.A.A.d. city:* I listen to this album at night while doing stuff and I like it.
+- *King Geedorah - Take me to your leader
+- *Living Death - World neuroses* It’s alright
+- *MF DOOM - MM..FOOD*
+- *Metallica - Kill ’em all*
+- *Metallica - Ride the lighting*
+- *Metallica - Master of Puppets*
+- *Metallica - …And Justice for All*
+- *Megadeth - Rust in peace*
+- *Megadeth - Countdown to extinction*
+- *Megadeth - Youthanasia*
+- *MF Grimm - The hunt for the Gingerbread man:* Underrated.
+- *Madvillain - Madvillany: Masterpiece.*
+- *Makaveli - The Don Killuminati: The 7 Day Theory*
+- *Neutral Milk Hotel - In the airplane over the sea:* Dude please learn how to sing.
+- *Scattle - Backup*
+- *Scattle - Visitors*
+- *TOOL - Lateralus*
+- *Viktor Vaughn - Vaudeville Villain*
+- *Wu-Tang Clan - Enter the Wu-Tang*
+- *Zabutom - Zeta force*
+- *cLOUDEAD - cLOUDEAD*
+- *death’s dynamic shroud.wmv - I’ll try living like this*: Used to love it. Now it gives me anxiety.
+- *smashing pumpkins - mellon collie and the infinite sadness:* My mother likes it
+- *suicideboys - I want to die in new orleans + some of their EPs*
+- *わたしのココ - カラダは正直:* I was told by my friend that this was noise, I thought noise was about making music breaking plates and stuff. Album was good.

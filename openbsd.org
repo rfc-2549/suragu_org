@@ -1,0 +1,482 @@
+#+INCLUDE: "inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+TITLE: suragu.net - OpenBSD
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+#+EXPORT_FILE_NAME: openbsd.html
+* Fear and Loathing in OpenBSD, or my experiences with OpenBSD
+The other day I woke up and I thought "I'm going to migrate my server
+to OpenBSD for absolutely no reason". And so I did. The operating
+system have been a pain and a pleasure simultaneously, and in this
+page I intend to give my experiences with it.
+
+I will be updating this page as I have more experiences with
+OpenBSD. So add this page to your booksmarks!
+
+Last update. 2022-06-09
+
+For questions or comments on this article feel free to reach me out at
+teru-sama [at] riseup [dot] net
+
+** Installation
+The installation process was pretty straightforward, it was just
+enter, enter, enter, altough I had to connect an ethernet cable for it
+to download some necessary firmware (so I could use the network card)
+and thus, the wireless connection. 
+
+** Setting up services
+*** httpd(8)
+The website you're in is the website I care the most, kill-9 can wait
+because that's only a website in which i complain about
+things. Complaining about everything is not good because in this life,
+well, in Ozzy Osbourne words, "Learn how to love and forget how to
+hate". So I'd rather focus on ebin.city and suragu.net for the
+time.
+
+OpenBSD ships with the =httpd= web server. A really simple and very
+secure http server. The main config file is =/etc/httpd.conf= which
+has a very simple, human readable syntax.
+
+One of the features of this webserver is that chroots to a
+directory. Meaning that, to the web server, anything before the given
+directory (=/var/www= by default), does not exist. So if a vulnerability
+is found, the attacker can't do much things, as the attacker can't go
+beyond =/var/www=.
+*** slowcgi(8)
+OpenBSD comes out-of-the-box with a FastCGI implementation, which is
+very simple to use. you only have to add =fastcgi= at the desired site
+in =httpd.conf= . The following configuration file is enough to
+execute CGI scripts.
+#+begin_src conf-space
+  server "suragu.net" {
+         listen on * port 80
+         root "sites/suragu.net"
+         location "/*.cgi" {
+                  fastcgi
+                  root "sites/suragu.net"
+         }
+  }
+#+end_src
+
+But not so fast! Remember that httpd runs in a chroot? Well, your CGI
+apps won't work by default, because the chroot lacks the binaries that
+are necessary to execute the program. So if your CGI appliaction is a
+perl script, you'll have to do something like =cp /usr/bin/perl
+/var/www/bin=. If your Perl script uses third-party modules, you'll
+have to copy them to anything that is in =@INC=, so
+=/usr/var/www/usr/lib/perl5= or something like that. Also your chroot
+will lack all the core utils. I just installed plan9port and copied
+the files to =/var/www/bin=, which is more than enough.
+
+As mentioned before. I haven't been able to setup werc in httpd. Not
+sure why. I might try to reinstall it some other day. But I guess I'd
+have to use another server to do that.
+
+As of 2022-06-02 I got werc to werk under httpd. The config file is a
+bit weird, but it worked. Altough I had to install an older werc
+version because the most recent one had some issues. This is the
+config that worked. Thanks to solene in IRC for the pattern!
+
+#+begin_src conf-space
+  server "kill-9.xyz" {
+          alias "www.kill-9.xyz"
+          listen on 127.0.0.1 port 1340
+
+          listen on * tls port 443
+
+          tls {
+                  certificate "/etc/ssl/kill9cert.pem"
+                  key "/etc/ssl/kill9key.pem"
+          }
+
+          # If there's a dot in the URL (i.e. a file extension, don't run it as
+          # a CGI script.)
+
+          location match "%s*%.%s*" {
+                  root "/werc/sites/kill-9.xyz"
+                  no fastcgi
+          }
+
+          location match "/" {
+                  fastcgi param SCRIPT_NAME "/werc/bin/werc.rc" 
+                  fastcgi param SCRIPT_FILENAME "/werc/bin/werc.rc"
+                  fastcgi param DOCUMENT_ROOT "/werc/sites/kill-9.xyz"
+          }
+          root "/werc/sites/kill-9.xyz/"
+
+
+  }
+#+end_src
+
+And then I tried to install cgit. When clonning from httpd I got an
+error I've never got before. Something like "Recieved HTTP/0.9 when
+not allowed". I don't know what the hell =httpd(8)= meant by that. But
+it was fixed by nuking the repos and pushing them again from
+scratch. I guess it had something to do with file corruption. But you
+have to be crazy on acid to think that sending HTTP/0.9 is a good way
+to tell a file is corrupted.
+*** Darknets
+Not much difference from how you'd install Tor & I2P in a Linux
+machine. Just install the tor and i2pd packages using =pkg_add(1)= and
+configure them normally. I had to copy the old private keys from my
+old machine to the new server. But that was not a big issue. I also
+migrated from the classic I2P, written in Java to i2pd. Not because I
+dislike the Java I2P, I think it is, along with Freenet, the only good
+software written in Java. I just wanted to keep the server as light as
+possible. And i2pd is way lighter than Java I2P.
+
+** Programming in OpenBSD
+OpenBSD claims to be the most secure UNIX out there. This is probably
+true as it has much features, such as the W^X thing. Which means
+memory can be written or executed, but not both. Basically an attacker
+could not execute a buffer overflow attack. Because he can only
+write. But not execute it. This thing was introdouced in 2003.
+*** pledge(2)
+OpenBSD takes security very seriously. This was the reason to be of
+the =pledge()= syscall. Pledge does, as defined by the manpage:
+"restrict system operations". This is the prototype:
+=pledge(const char *promises, const char *execpromises);=
+
+Check the manpage for the possible promises. This is a quick example:
+
+
+#+begin_src c
+  #include <stdio.h> 			  /* printf() */
+  #include <unistd.h>			  /* pledge() */
+  #include <sys/stat.h>		  /* chmod() */
+
+  int
+  main(void)
+  {
+       /* stdio promise allows basic input output operations. Check the
+        ,* manpage for the syscalls this promise allows. */
+       pledge("stdio", "");
+
+       chmod("/etc/passwd",0644);
+
+       return 0;
+       /* This code will crash at runtime. the "stdio" promise doesn't
+        ,* allow the chmod() syscall. */
+  }
+#+end_src
+
+Running that code will prodouce the following output:
+
+#+begin_src sh
+Abort trap (core dumped) 
+#+end_src
+
+This is very useful, imagine that for example, some injects, somehow,
+malicious code in your =cat(1)= program. Sending data to a remote
+server. As cat didn't =pledge("inet",...)=, cat won't be able to
+create a connection.
+*** unveil(2)
+I like this syscall more than =pledge(2)= according to the manpage:
+"unveil parts of a restricted filesystem view" This means that, except
+for the file specified in the =unveil()= calls, wont' exist for the
+program. Consider the following code and its output:
+
+#+begin_src c
+  #include <unistd.h>			  /* read(), write(), unveil() */
+  #include <fcntl.h>			  /* open() and flags */
+  #include <string.h>			  /* strerror() */
+  #include <errno.h>			  /* errno variable */
+  #include <stdio.h>			  /* fprintf() */
+
+  int
+  main(void)
+  {
+       /* This program can exclusively open /etc/httpd.conf for reading. */
+       unveil("/etc/httpd.conf","r");
+       /* This call disables further calls to unveil() */
+       unveil(NULL, NULL); 
+       /* What happens if we try to open another file? */
+       int fd = open("/etc/passwd", O_RDONLY);
+
+       if(fd == -1) {
+            fprintf(stderr,"Error opening file: %s\n",
+                    strerror(errno));
+            _exit(-1);
+       }
+
+       char buf[8192];
+       int bytes = read(fd, buf, 8192);
+       write(STDOUT_FILENO, buf, bytes);
+
+       return 0;
+  }
+#+end_src
+
+Output: =Error opening file: No such file or directory=
+
+Yes, my /etc/passwd file exists.
+*** perl(1)
+Perl is the only scripting language that OpenBSD ships. And they have
+their reasons you can read [[https://marc.info/?l=openbsd-misc&m=159041121804486&w=2][here]]. This means that Perl comes with
+support for the OpenBSD weird features. This means that you can call
+=pledge(2)= and =unveil(2)= from your Perl scripts! Here's an example
+of that:
+
+#+begin_src perl
+  #!/usr/bin/perl
+
+  # The syscalls come as modules, so you have to import them, the
+  # subroutines are exported by default.
+
+  use OpenBSD::Pledge;
+  use OpenBSD::Unveil;
+  # The manpage says that, without the "stdio" promise, perl is useless,
+  # so it is called by default no matter what you do.
+  pledge("inet rpath wpath unix"); # Some example promises...
+  unveil("/etc/httpd.conf","r");
+  unveil("/etc/pf.conf","r");
+  unveil(); # Restrict further calls to unveil()
+
+#+end_src
+*** strlcpy(3) and strlcat(3)
+The well known =strncpy(3)= and =strncat(3)= functions copy no more
+than =n= characters, but these functions are not guaranteed to add the
+'\0' at the end of the string. =strlcpy(3)= and =strlcat(3)= guarante
+that the string ends with '\0'
+*** Makefiles
+For some reasons, I wanted to rewrite the Makefile of one of my
+programs. And I discovered that BSD make is much better than GNU
+make. With GNU Make you have to declare pattern rules. And weird
+syntax. And you have to write similar makefiles for each program. In
+OpenBSD this is not necessary because makefile has some kind of
+"templates". This is a perfectly working makefile, /with =clean= and
+=install= targets/
+#+begin_src makefile
+PROG = sakisafecli
+SRCS += funcs.c sakisafecli.c
+MAN  = sakisafecli.1 sakisafeclirc.5
+LDADD  = -lssl -lz -lpthread -lnghttp2 -lcurl -lconfig -lcrypto -L/usr/local/lib
+CPPFLAGS = -I/usr/local/include 
+BINDIR=/usr/local/bin
+.include <bsd.prog.mk>
+#+end_src
+
+This makefile also works in Linux, but using the =bmake= command
+instead of =make=. It also works in FreeBSD but you'd have to repleace
+CPPFLAGS with CFLAGS. 
+*** Libraries
+OpenBSD, unlike every Linux distribution out there, thinks about
+everyone. And when you download a library through the package manager,
+it will install the shared objects (for dynamic linking), the header
+files (which means, no -dev/-devel packages) AND the .a files. For
+static linking!
+** Software and the power it holds
+OpenBSD comes with a lot of software that should be enough for your
+normal tasks. But, it's not like OpenBSD grabbed some code and put it
+in the code, no, they wrote their own versions of popular
+software. And "ported" them to OpenBSD, so the software that comes
+with the operating system uses the security features, they call
+=pledge()=. and stuff like that.
+
+*** mg(1)
+This is a Emacs clone. For the people who, for any reason, can't (or
+don't want) to run GNU Emacs. This clone is pretty complete, the only
+thing it lacks, regarding emacs, is emacs lisp support and syntax
+highlighting. But this is a good =nano(1)=, =ed(1)= or =vi(1)= repleacement.
+*** signify(1)
+GNU Privacy Guard is kinda heavy, and we don't have any other decent
+OpenPGP implementation. This is the reason of why the OpenBSD devs
+created =signify(1)=, a tool to cryptographically sign and verify
+files and messages. And this is the way OpenBSD images are
+verified. It's pretty simple to use:
+
+#+begin_src shell-script
+  # Generate pub and sec key. They have to have the same name. Only
+  # changing the file extension
+
+  $ signify -G -c "raoul's signify key" -p raoul.pub -s raoul.sec
+
+  # Sign a file/message
+
+  $ echo "Hello world!" > message.txt
+  $ signify -S -s raoul.sec -m message.txt
+
+  # Verify file/message
+
+  $ signify -V -p raoul.pub -m message.txt
+
+  # Further examples in the manpage.
+#+end_src
+*** tmux(1)
+Tmux, the legendary terminal multiplexer, that is way better than
+screen, was initially developed for OpenBSD. I don't think I have to
+talk a lot about tmux because everyone knows it. tmux in OpenBSD comes
+with all the security features too.
+*** doas(1)
+This is a repleacement for sudo that has been developed by OpenBSD. it
+has also emerged in the linux community. Altough it works best in
+OpenBSD. I have some issues getting doas to work in Debian, but not in
+Void Linux. doas is very simple to configure. No need to add yourself
+to a group or anything like that. You can simply add this to
+=/etc/doas.conf=
+
+#+begin_src conf-space
+  permit nopass keepenv raoul as groq
+  # Allow user raoul to execute commands as groq. Keeping all the
+  # environment variables.
+
+  # raoul can't execute commands as any user that is not groq.
+
+  permit nopass keepenv qrog
+
+  # qrog can execute commands as any user.
+#+end_src
+*** openrsync(1)
+Sometimes you want to syncronize files between your computers and
+servers. And then you realize =cp(1)= is kinda bad for that and =tar=
+isslow. Then you discover =rsync= and that just works. But this wasn't
+the case for the OpenBSD guys, they wanted a rsync implementation
+under the BSD license. So they wrote =[[http://openrsync.org][openrsync=]]. This works just like
+rsync and, according to the manpage: "openrsync is compatible with
+rsync protocol version 27 as supported by the samba.org implementation
+of rsync". Meaning that if you don't have openrsync in other server,
+it will just worke, and vice versa. This is an example of usage of
+openrsync.
+
+#+begin_src shell
+  openrsync --rsync-path=openrsync -av Xanopticon remote_server:/var/www/files/Music
+#+end_src
+
+As I don't have =rsync= installed in the remote server, but I have
+=openrsync=, I specify that the path of =rsync= is =openrsync=. This
+way it just works.
+
+*** acme-client(1)
+Today I recieved a mail telling me that the [[https://kill-9.xyz][kill -9]] certificate
+expired. "Fuck's sake" --- I inmediatly thought. "I have to renew
+it". But I was not going to install certbot in this OpenBSD server. So
+I had to find a way. I remembered that OpenBSD ships with
+=acme-client=. A program that helps you to generate your certificates
+for TLS connections. And they can be signed with the Let's Encrypt
+certificate authority. The config file is pretty simple and
+intuitive. You can copy and paste it from
+=/etc/examples/acme-client.conf= and only configure the revelant part
+that would be your domain. In my case I have it like this:
+
+#+begin_src conf-space
+  authority letsencrypt {
+          api url "https://acme-v02.api.letsencrypt.org/directory"
+          account key "/etc/acme/letsencrypt-privkey.pem"
+  }
+
+  domain suragu.net {
+          alternative names { "www.suragu.net", "files.suragu.net" }
+          domain key "/etc/ssl/suragu.key" ecdsa
+          domain full chain certificate "/etc/ssl/suragu.crt"
+          sign with letsencrypt
+  }
+#+end_src
+
+I used to use wildcard certificates. That were valid to any suragu.net
+subdomain. But I couldn't make them work in =acme-client=. But as
+=acme-client= is less of a pain in the ass than certbot. I can
+certainly just modify the configuration file each time I create a new
+subdomain. And that doesn't happen too often.
+** Documentation
+OpenBSD takes documentation very seriously. So seriously, if a manpage
+is lacking in a sys util, it's considered a bug. So everything that
+comes with your OpenBSD installation is very well documented. Config
+files have their own manpages section, the section 5. so you can learn
+how to write httpd config files by running =man httpd.conf= This is
+something more developers should do. There's also the =/etc/examples=
+directory which contains examples of most config files that you'd want
+to setup. Those file are commented and everything. But =/etc/examples=
+always lacks the config file I want or doesn't help at all.
+** Backups
+I am a self-proclaimed good sysadmin. This means I should be able to
+do backups and restore them. Not gonna lie, before OpenBSD i haven't
+had any backup. Though I have heard that you can do incremental
+backups with =tar(1)=. I guess this could be useful. But OpenBSD comes
+with it's features and things. These tools are =dump(8)= and
+=restore(8)=. Those were a bit confusing to me until I learned how to
+use them properly. You can read the manpages for [[https://man.openbsd.org/dump.8][=dump(8)=]] and
+[[https://man.openbsd/restore.8][=restore(8)=]] which explains pretty well how to use the software. At
+least that's what should have happened. Because it didn't. For some
+reason OpenBSD insists in using tapes in 2022. So yeah, apparently the
+-a flag is mandatory these days. You can use this command to backup a
+directory, =/etc= in this case.
+#+begin_src shell-script
+  # 0 means it is a level 0 backup. Next backup should be level 1, then
+  # 2... Read the manpage for more details.
+  $ doas dump -0uaf backup_etc.dump /etc
+#+end_src
+This will take some time depending how big the directory is. =/etc= is
+usually not too big so this example will not take a lot of time.
+
+After 1 hour of wondering why my backup wasn't working, i discovered
+that =restore(8)= takes everything as relative paths. Meaning that it
+will restore to the directory you're in, so if you do =restore
+-xfbackup_etc.dump /etc/httpd.conf=, it will restore it to
+=$PWD/etc/httpd.conf=, not to =/etc/httpd.conf=. So you should cd to /
+when restoring backups, something like this:
+
+#+begin_src sh
+  cd /
+  restore -xf /var/backups/backup_etc.dump /etc/
+#+end_src
+** Network
+First I tried to use the wifi card my computer came with. But for some
+reason it kept sayin =wpi0: device timeout=. Leaving my computer
+without connection. So I had to connect the Ethernet cable. And I
+thought that that would solve the connection problem. But today I woke
+up and my computer did not have internet connection. But it had LAN
+connection. Not sure what happened. And well, that's the reason of why
+my site was down. I'll try to fix it.
+*** Firewall
+OpenBSD comes with a firewall, called pf, which stands for Packet
+Filter. As every other software developed by OpenBSD, it uses its
+simple config file.
+
+I used the firewall to deny ssh requests from every IP address except
+my local network (that is, 192.168.0.0/16) and from my static IPv6
+address.
+
+At first the rules were not working for the IPv6 address, because I
+don't have IPv6 at home, I use a WireGuard interface for that for
+that, and pf didn't know that. So I had to specify that those rules
+should also apply to the wireguard interface, like this:
+
+=pass in on {egress wg0} ...=
+
+And that just worked.
+
+Yiou can also limit the connection of an user. For example, the
+following line will disable all the connection for the user 'groq':
+
+#+begin_src conf-space
+  # Block outcoming connections to user raoul.
+  block return out proto {tcp udp} user raoul 
+  # Block incoming connection to user raoul. Not sure how useful this is.
+  block return in  proto {tcp udp} user raoul
+#+end_Src
+
+And I've also added some IP addresses that have tried to exploit,
+ehem, WordPress vulnerabilities in my webserver. I added them to a
+file, =/etc/spammers=. And used a =pf(8)= feature to block all of
+them. And I also wanted that ssh would be disabled for everyone except
+for the machines in the Local Area Network. So only people in my
+network could ssh to my server. pf.conf has a very readable syntax,
+which makes this very easy:
+
+#+begin_src conf-space
+  # Good/Dreaded IP ranges
+  table <localnet> const { 192.168.0.0/16 }
+  table <spammers> const file "/etc/spammers"
+
+  # Block spammers requests to the server. Also requests to spammers.
+
+  block in on { egress wg0 } from <spammers> to any
+
+  # Allow SSH access from the LAN
+
+  block return in log proto tcp from any to port ssh pass in on egress
+  proto tcp from <localnet> to port 22
+#+end_src
+

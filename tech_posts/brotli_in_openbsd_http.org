@@ -1,0 +1,61 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+TITLE: suragu.net - Brotli in OpenBSD's httpd
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+#+EXPORT_FILE_NAME: index.xhtml
+
+* Brotli in OpenBSD's httpd
+
+The modern web is heavy. My website is not heavy, but I still wanted
+to add compression because why not. Fortunately, compression
+algorithms exists. Some web servers send compressed versions of the
+file they serve, to serve bandwith, or to make the site load
+faster. There are other methods to serve bandwith like minimized CSS,
+HTML and JavaScript. But I think we can all agree that using a
+compression algorithm is a better way to accomplish this.
+
+The main compression algorithm supported by browsers (and web servers)
+is gzip. A compression algorithm that has been with us
+since 1992. It's kinda old, but still serves its purpose pretty
+well. Especially when you use all of its power with the =-9=
+flag. Which compresses the file way better. At the cost of slower
+speed of compression and decompression. But this isn't a big problem
+since the client isn't receiving large files, like more than 100MBs,
+the client is receiving HTMl, CSS and maybe JavaScript. Not binary
+files (compression is kinda counterproducent with binary files).
+
+The OpenBSD httpd comes with the =gzip-static= option, you just add it
+wherever inside a =server= block in your httpd.conf. Then you =cd= to
+your webroot and run this command: =gzip -9k *.html=
+
+=-9= was explained before. And =-k= tells gzip not to delete the files
+after they have been compressed. As =gzip= deletes the original
+file. keeping only the =.gz= file.
+
+This should be enough for most scenarios. gzip compresses files really
+well. But I wanted more. So I made some changes to the httpd source
+code to add brotli support.
+
+At first. I wanted to add zstd support to httpd. And when I had
+everything done. curl was receiving the zstd files instead of the
+original files, I realized that browsers do not (yet) have zstd
+support. So I decided to use brotli instead. It wasn't that difficult
+to accomplish as I already wrote the hard part. I only had to replace
+"zstd" with "br".
+
+This isn't done automatically. If you currently have =gzip-static= on your httpd
+configuration. You must replace it with =br-static=. And then you have
+to remove all the =.gz= files in your webroot (as they aren't needed
+anymore). Then you can read the =brotli= manpage to learn how to use
+brotli. But I wanted maximum compression. So this command was enough:
+=brotli --max --keep *.xhtml=.
+
+[[../img/brotli_httpd.png]]
+
+You can download the patch [[https://ls.raoul11.net/files/KbQBFQat/brotli.patch][here]].
+
+
+

@@ -1,0 +1,177 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+options: ^:{}
+#+TITLE: suragu.net - Fear and loathing in Linux
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+
+* Fear and loathing in Linux (Or BSD user tries Linux)
+
+If you enjoy this article, please consider donating:
+https://liberapay.com/raoul11. For questions or comments on this
+article feel free to reach me out at teru-sama [at] riseup [dot] net.
+
+One day I said "I want to die with FreeBSD installed", and I still do,
+FreeBSD is a marvellous operating system that should be the final word
+in operating systems. Sadly the other day when I bought a new computer
+they pranked me very well because the network card this computer came
+with is not supported in the current stable version of
+FreeBSD. "Father, into your hands I commend my spirit, father, into
+your hands, why have you forsaken me?" I said, but after some searches
+I find that this network card WILL be supported and you can test the
+driver in the -CURRENT branch of FreeBSD, I didn't thought -CURRENT
+would be much of a pain, knowing I come from "bleeding edge" Linux
+distributions. So I installed FreeBSD 14.0, the thing worked but when
+I tried to install the required modules for xorg to work it didn't
+work. And that's all they had to say. I want a stable system. Not
+that.
+
+Some time ago, when I published my [[./freebsd_as_desktop.html][FreeBSD as desktop]] blog post, I got
+a comment in Hacker News (or lobsters, can't remember) that told me
+that I was making clickbait because the experience was good. And the
+title promised "Fear and loathing". Well, this one does have fear and
+loathing.
+
+So my first try was the old reliable. Void Linux, a distro that has
+never failed me. Until yesterday, because when you come from BSD, you
+know what's wrong with Linux.
+
+Despite Xfce focuses on Linux operating systems and the BSD support
+could be a lot better, because it sometimes can't tell the difference
+between oss and pulse audio, or the microphone doesn't work, or other
+kinds, doing trivial things was a lot easier on FreeBSD than in Void
+Linux, but that's okay. I can with it, i've had worse things in my
+life. So I could configure it. Then I wanted to install some packages
+for void installation in which I could use my beloved [[https://git.raoul11.net/sakisafe.git][sakisafecli]]. But
+when I installed it I found out what was wrong with Linux.
+
+So i tried to run =bmake= in linux (BSD make is much better than GNU
+make and should cover some trivial makefiles). And it started to give
+errors, like curl.h is not found. And this is when a BSD user will
+cause the Fall of Rome. In BSD operating systems, there are not
+=-devel= (or -dev) packages. So when you install libfoo you install
+the shared objects (.so files), the header files (the thing in
+/usr/local/include) and sometimes the .a files for static linking
+(which is something Linux distributions should also do). I don't think
+it's very arguable that it is possitive to include the header files in
+the same package. Because they're just text files that won't take a
+lot of space. Maybe this is normal for some kind of devices, but if
+you install arch linux or void in a amd64 machine i don't think you
+care a lot about space.
+
+That was the moment in which I remembered that one day a friend of my
+told me that arch linux doesn't have -devel packages. And that was
+enough for me to install Artix Linux, I don't even know what init
+system I'm using.
+
+Let the _fear and loathing_ begin.
+
+** Operation: filesystem
+The state of ZFS in Linux is quite commedic because OpenZFS is under
+the CCLD and Linux is on the GPL and CCDL is incompatible with the
+GPL. So because of the GPL we can't have ZFS endorsed by the kernel on
+Linux systems. Just because the GPL, I don't think it's pretty good
+that a so-called "free" software license tells you that you *must*
+share your changes. And I think it's pretty idiotic that, because a
+License, they can't add a sequence of ASCII characters to a kernel.
+
+It was pretty funny because one day I found this message regarding
+btrfs on FreeBSD on the forums:
+
+[[../img/freebsd_user_on_btrfs.png]]
+
+When I was installing Artix and it was part to create the partitions,
+I audibly chuckled, and I selected btrfs as my file system. And began
+using btrfs because I'm always open to try new things.
+
+As mentioned before, the state of ZFS on Linux is commedic, because of
+differences between Artix and Arch, I couldn't install the 3rdparty
+zfs module from the AUR, so I had to compile OpenZFS code myself. This
+wasn't much of a problem.
+
+Meanwhile, I also looked for "artix zfs" in my search engine and I
+found this blog post that was funny to me because it's like the
+counter part of the other post:
+
+[[../img/btrfs_better_than_zfs.png]]
+
+So well, installing ZFS from source wasn't much of a problem. After
+building and installing it =modprobe zfs= just worked and I could
+mount my pools just fine. And thus, restoring my data. so no big
+problem there.
+
+I wanted to try btrfs features because I am curious, and apparently
+btrfs is "zfs for linux", so i wanted to try its features
+
+Our man break19 was right, because if I want to add compression
+to my storage devices I have to do some weird stuff in the fstab, and
+that's too much, i prefer the old good "zfs set compression=gzip
+zroot" rather than editing that file. I also can't play with btrfs
+subvolumes or snapshots because the btrfs command line utility is
+horrible and I haven't figured anything out.
+
+** Package management and the power it holds
+
+Different commands. Same shit, the only package managers that has
+innovated in something are GNU Guix and Nix, but I don't think there
+is much difference between =pkg= and =pacman=.
+
+What is true is that =pacman= has a syntax that sucks, for example. in
+FreeBSD you'd do =pkg install emacs=, while with Artix you do =pacman
+-S emacs=, like I know what -S means, and apparently "pacman -Ss" is
+better than "pacman search", so i prefer FreeBSD package manager.
+
+But what was funny to me is that when I installed =clang=, pacman
+notified me that also =gcc= will be installed. I thought this was very
+curious so I asked in the artix IRC channel, the answer frightened me:
+
+#+begin_src text
+  <raoul>       | Hello, nice operating system and all, but I have a question
+  why does clang depends on gcc
+  <Dudemanguy> | it's because clang uses the standard library provided by gcc
+  most linux distros are like this
+#+end_src
+
+As a computer user I tell you, that no big problem. But as a BSD user
+I ask "why"?
+
+I didn't know it, but pacman is very fast. It downloads things in
+parallel and uses zstd, a fast compressing/decompressing software for
+compression, so I have no issues with pacman's speed. It is pretty
+fine.
+
+When I did some research on why I couldn't install wine in Artix linux
+I found out that my packages are being maintained by people with anime
+profile pictures. And I also discovered that, for some reason, they
+wanted to split all the repositories in separate repositories. Not
+sure why, they have like 5 repositories for everything. I can
+understand separating repositories with free/non-free software. But
+here they don't even do that. They're just making thing more complex
+for people who just want to install packages. In BSD this didn't
+happen as the main repo had all the 30k packages someone would ever
+need. And this operating system lacks packages. I had to build
+=cmusfm= myself.
+
+** Desktop
+I hate to say it but Artix was less of a pain to setup as a desktop
+than FreeBSD, this is because the installation was made with Calamares
+installer. So I didn't had to install Xorg and configure manually, the
+installer did all that for me. This wasn't the case in FreeBSD in
+which I had to configure Xorg manually. And this is appreciated. The
+Xfce setup just worked. And I bothered on ricing it like Windows XP
+because I live in the past. Some people ask me why I riced it why XP,
+the reason is because I can and I wanted.
+
+I have 0 reasons to complain about Linux in this case. So I just
+won't.
+** Conclusion
+If you haven't tried a BSD operating system. Don't, you'll get hooked to
+it and if you ever have to come back to Linux, you'll find yourself
+prefering to get a castration than installing Linux, because when you
+learn how BSD works, and its awesome features, the development
+philosophy (focusing in making a great operating system instead of
+focusing in a weird definition of freedom), you start to know why
+linux sucks.
+

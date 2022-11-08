@@ -1,0 +1,32 @@
+#+INCLUDE: "inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil
+#+TITLE: SURAGU
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+#+HTML_HEAD_EXTRA: <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+#+EXPORT_FILE_NAME: index.html
+
+* suragu.net
+Welcome to suragu.net! My personal website. In which you can read my
+philosophical posts or my posts about technology.
+
+* Contact
+
+You can contact me through email: chief_keef at riseup dot net or
+XMPP: keef at this domain
+* Donate
+
+If you appreciate my work and wish to say thanks, you can send money
+to any of these cryptocurrencies addresses:
+
+- Monero: 87nNzDdnACV614EuueWcwiX16hYNr9cVMACzYExHvGRRf2sHDUydjNvFvoMRBRbJntgxanvE9vzGxLTgenydK8PuSMq9aXC
+- Bitcoin: bc1q8k6f3ja8na82wl6ehw73uhy67d45pkhs63yvy5    
+
+* Mirrors
+#+begin_export html
+<p>
+<a href="http://sukamuzgxigntu7issqf3y5bfsskwg5zzrzbuqjaxxmhkfoxbgiy77qd.onion">[Tor]​</a> <a href="http://46egvt2hpvkqwm5xw4wyyozp6hkwvnmbcys7bi6rh4o4wktllpea.b32.i2p/">[I2P]​</a>
+</p>
+#+end_export

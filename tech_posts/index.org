@@ -1,0 +1,28 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil
+#+TITLE: suragu.net - Tech posts
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+#+EXPORT_FILE_NAME: index.html
+
+* suragu.net tech posts
+
+I have a [[../blog/][blog]], but I to keep it to very weird things that come to my
+mind that don't require text formatting, images, or anything that is
+not plain text.
+
+The intention of this section of my website is to make a space for all
+the weird things that are related with tech. Which mostly always
+require formatting like syntax highlighting, images, or monospaced
+text. So I decided to create this section for the tech related posts.
+
+These articles are sorted from oldest to newest.
+
+1. [[./org_mode_as_ssg.html][org-mode as static site generator]]
+2. [[./freebsd_as_desktop.html][raoul's experiences with FreeBSD as desktop.]]
+3. [[./brotli_in_openbsd_http.html][brotli in OpenBSD's httpd.]]
+4. [[./fear_and_loathing_in_artix.html][Fear and Loathing in Artix (or BSD user tries Linux)]]
+5. [[./bsd_make.html][Using BSD make as build system]]
+6. [[./modern_perl.html][Perl in CURRENT_YEAR]]

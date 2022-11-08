@@ -1,0 +1,298 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+options: ^:{}
+#+TITLE: suragu.net - Fear and loathing in FreeBSD
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+
+* Fear and loathing in FreeBSD, or raoul's experiences with FreeBSD
+** Introduction
+Not so long ago I wrote [[../openbsd.xhtml][my experiences with OpenBSD]]. This post was
+about my experiences with OpenBSD but as a server, not as
+desktop. Using an operating system as a desktop is completly
+different than using it as a server.
+
+One day I thought "damn, Linux sucks! But I have to use this because
+the developer of the browser that I use is an asshole!". And had to
+stick to Linux for a while. But then another day I thought "Hmm,
+FreeBSD claims to run Linux binaries better than Linux, let's give it
+a try". Good operating systems have to sell themselves some
+way. And that claim worked for me. So I went to FreeBSD.org, clicked
+the big yellow button that says "Download FreeBSD" and downloaded the
+memstick image for amd64 because that's what my computer runs.
+
+I will be updating this site as I have more experiences with
+FreeBSD. So add to bookmarks!
+
+Last update: 2022-06-21
+
+
+** Installation
+The installation was pretty straight forward. I don't think people can
+get lost in this. I just selected ZFS as my file system (more on that
+later). And I don't remember much other things in the
+installation. And as I forgot them. I don't think they are worth
+mentioning.
+
+** Networking
+I want to connect to the internet because, among other reasons, I have
+a website, electronic mail and I like to talk to internet people
+sometimes.
+*** Wireless connection
+Sadly I no longer have the router in my room so I can't use an
+ethernet cable. So I have to use the dreaded wireless card. I was very
+surprised when I found out that FreeBSD supports this Atheros card.
+so I don't have to open the computer and put an Intel one. For the
+network card to work, I only had to modify the kernel booting
+process. Sounds very hard but it is just editing
+=/boot/loader.conf/)=. I added the following lines to use the =ath=
+driver:
+
+#+begin_src shell-script
+  if_ath_load="YES"                                                    
+  if_ath_pci_load="YES"
+#+end_src
+
+Then, in =/etc/rc.conf= (we will talk about it later)
+
+#+begin_src shell-script
+  wlans_ath0="wlan0"
+  ifconfig_wlan0="up"
+  ifconfig_wlan0="WPA DHCP"
+#+end_src
+
+That will automatically start =wpa_supplicant= and use DHCP to get an
+IP address
+*** DNS server
+Normally for resolving domains you'd use a server like 8.8.8.8,
+1.1.1.1 or 192.168.1.1. But I thought using local_unbound would be a
+good idea for this, as if i'm my own DNS resolver, I can choose what
+to resolve and what not to. I followed [[https://vermaden.wordpress.com/2020/11/18/unbound-dns-blacklist/][this guide]] to configure
+local_unbound, with some block lists. And I also modified
+/etc/dhclient.conf to use =127.0.0.1= as default DNS server. I did not
+setup a fallback DNS server because if my computer is up, unbound is
+up as well. So I don't really need a fallback DNS server.
+
+#+begin_src conf
+  interface "wlan0" {
+  append domain-name-servers 127.0.0.1;
+  }
+#+end_src
+** Making the fresh installed system a desktop.
+
+I'm no longer a Linux user. Now I am a BSD user. As such I must be
+aware about this "X11" thing. So I had to install the =xorg=
+package. FreeBSD comes with a binary package manager called =pkg=. We
+will talk more about this in the packages section. I just had to run
+=# pkg install xorg=. Add the user =raoul= to the =video= group and
+configure my =.xinitrc= so everytime i run =startx=, =bspwm= is
+started.
+
+I had to add i915kms_load="YES" to =/boot/loader.conf). Which is the
+driver for Intel integrated graphics cards. Or something like that.
+
+As mentioned before. I had to modify my .xinitrc (something that as a
+former Linux user I have never done because I always used lxdm as
+display manager. But as FreeBSD doesn't have lxdm available I had to
+get alternatives). My .xinitrc looks like this:
+
+#+begin_src shell-script
+  dunst&
+  xrdb .Xdefaults&
+  compton&
+  xset r rate 300 50&
+  feh --bg-fill ~/.wall.png 
+  sxhkd
+  exec bspwm
+#+end_src
+
+With that =.xinitrc=, running =startx= just works.
+
+** Package management
+
+FreeBSD comes with 2 options to install packages: binary-based
+packages and port-based packages which installs packages compiling
+them from source code.
+
+*** Binary package management
+
+I installed an operating system because I wanted to use it. And it is
+impossible to use an operating system if you cannot install software
+in it. Fortunately, FreeBSD comes with a package manager called =pkg=,
+a very original name for a package manager. It is simple to use,
+and blazing fast. I would say it is faster, or at least as fast as
+=xbps=, the fastest package manager I know. Using it is utter simple,
+here are some examples:
+
+#+begin_src shell-script
+  # All these commands must be run as root.
+
+  # Install the package "emacs"
+  pkg install emacs
+  # Deinstall the package "emacs"
+  pkg remove emacs
+  # Remove all the unneeded dependencies
+  pkg autoremove
+  # List all packages that contain "edit" in its name
+  pkg search edit
+  # List all packages that contain "editor" in its comment
+  pkg search -S comment editor
+#+end_src
+
+Unfortunately, =pkg= comes with insane defaults. You have to type
+'y' and then 'enter' to confirm you want to install a package. As
+=pkg= defaults to "No". I guess this is a security feature for some
+users. But as I'm too lazy to press the 'Y' key, and I'd rather just
+to press enter, I edited =/usr/local/etc/pkg.conf= and added the
+following content:
+
+#+begin_src conf
+  # I don't want to press 'Y' everytime.
+  DEFAULT_ALWAYS_YES=yes
+  AUTOCLEAN=yes
+  IP_VERSION=4
+  # I don't want to wait to upgrade a package. I'll update my system
+  # only when I want :)
+  REPO_AUTOUPDATE=no
+#+end_src
+
+*** Source package management
+Sadly I can't talk a lot about this one because I have a overheated
+machine and if I compiled something in this computer we would have the
+biggest destruction known to civilized man since 476 A.D.
+
+But I can compile small software without a lot of problem.
+
+First you have to get the port collection if you didn't do it in the
+installer with the following command:
+
+=# portsnap fetch extract=
+
+Which will, fetch the port collection and extract them in
+=/usr/ports=. These ports are just a collection of Makefiles. Which
+will download and build the source code from you. These makefiles are
+kinda easy to work with, and also to write. As i'm the maintainer for
+some FreeBSD packages :)
+
+You can also configure which CFLAGS you want *by default*. Just edit
+the =/etc/make.conf= file. Mine looks like this:
+
+#+begin_src conf
+  CFLAGS+= -O2 -pipe -march=native -mtune=native
+  DEVELOPER=yes
+  MAKE_JOBS_UNSAFE=yes
+#+end_src
+
+** Linux emulation
+As I mentioned before, what was keeping me at the Linux hell was the
+Web Browser known as Pale Moon. I followed [[https://docs.freebsd.org/en/books/handbook/linuxemu/][the guide]] to run Linux
+software in FreeBSD. Downloaded Pale Moon, and after installing a few
+dependencies, yup, it worked just like if I was using it in Linux.
+
+Then I =rm -rf palemoon= and moved to firefox. Don't really know why.
+** Multimedia
+This was kind of a pain, =oss= didn't want to work for undisclosed
+reasons. Too lazy to install sndio. So I went the easy way and just
+installed pulseaudio. Call me what you will. But I want to listen to
+Madvillain, not say "I DON'T USE PULSEAUDIO" in the internet. I use
+=cmus= as my music player. The binary distribution of cmus comes with
+the PulseAudio plugin disabled so I had to install it from the ports
+system.
+
+mpv and audio in FireFox just worked.
+** ZFS
+After years of using UFS, it was time for a change. ZFS was
+introdouced experimentally in FreeBSD 7. And in the latest version, it
+is the default filesystem. This filesystem is, described by itself as
+"The last word in file system" That makes sense to me. They are not
+going to say it's a bad filesystem if they want people to use it. And
+if i'm using a filesystem that takes most of my RAM, it should be good
+at least. And, yes, ZFS is good.
+*** Pools and storage
+"A storage pool is the most basic building block of ZFS. A pool
+consists of one or more vdevs, the underlying devices that store the
+data.". I don't understand any of that. But a pool must be created to
+create your filesystems (datasets) and volumes. In the default
+installation, the dataset is called "zroot".
+
+These "file systems" are similar to partitions. It is mounted wherever
+you want and has its own metadata.
+*** Creating and configuring datasets
+My friend Endemic has a lot of media that must be stored, he has lost
+media, music from bands no one has ever heard of and soviet movies and
+obscure breakcore. This kind of media has to be archived and zfs does
+a great work creating that. ZFS has also a compression feature,
+supporting a lot of compression algorithms.
+
+So to create the zpool that I want to be mounted in /storage, I ran
+the following commands (as root)
+
+#+begin_src shell-script
+  # Create the pool storage in the /dev/da0 device, which is an external
+  # hard drive
+  zpool create storage /dev/da0
+  # Set zstd-9 compression in the pool.
+  zfs set compression=zstd-9 storage
+#+end_src
+
+And that's it. Then when you copy big files to /storage they will be
+compressed. And as our CPU is fast and zstd uses a fast algorithm, you
+probably won't notice that you're actually compressing and
+decompressing files all the time. Which is good. You can also use
+zstd-19 as compression, which redouce the filesize of everything by a
+lot. But this has a drawback, quoting from the [[https://docs.freebsd.org/en/books/handbook/zfs/index.html][FreeBSD ZFS reference]]:
+
+#+begin_quote
+ZFS offers 19 levels of Zstd compression, each offering
+incrementally more space savings in exchange for slower
+compression. The default level is zstd-3 and offers greater
+compression than LZ4 without being much slower. Levels above 10
+require large amounts of memory to compress each block and systems
+with less than 16 GB of RAM should not use them. ZFS uses a selection
+of the Zstd_fast_ levels also, which get correspondingly faster but
+supports lower compression ratios. ZFS supports zstd-fast-1 through
+zstd-fast-10, zstd-fast-20 through zstd-fast-100 in increments of 10,
+and zstd-fast-500 and zstd-fast-1000 which provide minimal
+compression, but offer high performance.
+#+end_quote
+
+And as I use a ThinkPad in which I didn't even bother on adding more
+RAM. I use zstd-9. Which compresses the files somehow good. You can
+see the stats with =zfs get used,compressratio,compression,logicalused
+dataset=.
+
+#+begin_src
+zroot  used           64.1G           -
+zroot  compressratio  1.15x           -
+zroot  compression    zstd-9          local
+zroot  logicalused    66.1G           -
+#+end_src
+
+Used is the revelant to the filesystem size. And logicalused is the
+size the filesystem would have without compression. So this means I
+have saved 2GBs thanks to zstd-9. I do not feel any performance difference.
+*** Snapshots
+We all fuck it sometime. And that is okay. What is not okay is to lose
+data. ZFS contains a tool to create snapshots of a dataset. Which are
+basically backups that restore your filesystem to a certain
+point. These are very useful to recover lost data. You can create a
+backup of your =home= partition like this:
+
+#+begin_src shell-script
+  zfs snapshot zroot/usr/home@(date +%F)
+#+end_src
+
+After creating the snapshot and completly trusting ZFS, i ran rm -rf
+~/*. Which nuked my home directory and everything in it. Then I ran
+=zfs rollback zroot/usr/home@2022-06-18= and it was restored. Like
+nothing ever happened. According to the FreeBSD reference, snapshots
+can take a lot of disk space so you should delete them as they're no
+longer needed.
+*** Other features
+
+ZFS has features like incremental backups, encryption, RAIDS, but I
+haven't tried them.
+** Jails
+TODO

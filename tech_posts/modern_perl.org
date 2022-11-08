@@ -1,0 +1,214 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil 
+#+TITLE: suragu.net - Perl in CURRENT_YEAR
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+#+EXPORT_FILE_NAME: modern_perl.html
+
+* Perl in CURRENT_YEAR
+
+Perl is a programming language that will always live deep into my
+heart. It was the first programming language I can say I
+mastered. But it's sad that not even God uses this programming
+language anymore. It's a great programming language, it has evolved in
+the latest years, so much that it even looks like a modern programming
+language. Some of the stupid design of perl has been fixed.
+
+It is known by everyone that the perl Syntax sucks. It makes 0 sense,
+at least for learners. Experimented perl programmers no longer fear
+anything.
+
+For comments or questions on this post, email me at sukamu at riseup
+dot net.
+** Function prototypes
+Perl always lacked function signatures (prototypes), the way you
+passed arguments to a function in perl was horrible, it is like
+functions in bash:
+
+#+begin_src perl -n
+  sub sum() {
+       my ($x, $y) = @_;
+       return $x + $y;
+  }
+
+  print sum(3, 4); # Prints 7
+#+end_src
+
+You define the function parameters inside the function, just like in
+bash. This is, in my opinion, horrible, but since perl 5.36, you can
+have function signatures, to use perl's new features, you have to
+specify the version of perl you want to use, to do this just use the
+=use= keyword.
+
+#+begin_src perl -n
+  use v5.36;
+
+  sub sum($x, $y) {
+       return $x + $y;
+  }
+  say sum(4, 5); # prints 9, and adds a newline.
+#+end_src
+
+The function signature feature was added in Perl v5.20, but it started
+to be considered stable at v5.36. There is also this new "say"
+function that is just like =print= but adds a =newline= at the end of
+the line, like python's =print= or C's =puts()=. These features were
+inhereted from Raku.
+
+** Try/Catch
+
+Perl added an experimental Try/Catch blocks in v5.34. These are still
+considered experimental as of v5.36. But you can still use them. The
+=try/catch= (also =finally= if you're using v5.36) works like any
+other programming language that has try/catch blocks. As this feature
+is still experimental and should not be used seriously, you have to
+specify that you want to use the experimental feature ='try'=:
+
+#+begin_src perl -n
+  use v5.36;
+  use strict;
+  use warnings;
+
+  use experimental 'try';
+
+  sub attempt() {
+       say "I'm doing something!";
+       die "Goodbye cruel world";
+       return 42;
+  }
+
+  try {
+       my $x = attempt();
+  } catch($e) {
+       say "Exception: $e";
+  } finally {
+       say "Finished";
+  }
+#+end_src 
+
+
+And the thing does exactly that, the script dies inside the =try=
+block, so it's passed to the =catch= block as an exception. And
+finally, the =finally= block is executed.
+
+** the =isa= operator
+
+The isa operator tests whether an object has a instance of a certain
+class, in non-object programming slang, it just checks the type of a
+variable. The =isa= operator was introdouced as an experimental
+feature in perl v5.34.0 and was no longer considered experimental in
+the current v5.36.0.
+
+#+begin_src perl -n
+  #!/usr/bin/perl
+
+  use v5.36;
+  use LWP::UserAgent;
+  my $ua = LWP::UserAgent->new;
+
+
+  if ($ua isa LWP::UserAgent ) {
+       say "LWP::UserAgent object instanced successfully";
+  } else {
+       die "something that should not have happened happened.";
+  }
+#+end_src
+
+Before this operator, you had to use the =ref= function and string
+checker to accomplish the same thing, like this;
+
+#+begin_src perl -n
+  use LWP::UserAgent;
+  my $ua = LWP::UserAgent->new;
+
+  if(ref($ua) eq "LWP::UserAgent") {
+       # Do stuff...
+  } else {
+       # Do stuff when failed.
+  }
+#+end_src
+
+Which clearly makes a difference at the moment of reading and writing
+new code.
+
+** The defer block
+
+This is a feature that others programming languages have, C++ calls it
+RAII, there are plans to add it to the next version of the C
+programming language, also golang has the defer block. Thing is that
+in perl it works like this:
+
+#+begin_src perl -n
+  #!/usr/bin/perl
+
+  use v5.36;
+
+  use experimental 'defer';
+  my $x = 0;
+  {
+       $x = (2^31)-1;
+       defer {
+            say "The block has finished it's execution";
+            $x = 0;
+       };
+       say "Let's pretend i'm doing stuff...";
+       say "x value: $x";
+  }
+  say "x value: $x";
+#+end_src
+
+Simillary to =try/catch=, this function is experimental and should not
+be used in production. Or use it if you want. But don't blame the perl
+devs if something breaks (which, honestly, I doubt that your system
+will break because of an experimental feature. Just don't abuse it or
+use it in very weird ways and you'll be fine).
+
+** builtin values
+
+=builtin= is a new core module that shipts with perl v5.36. This
+package are plains function and behave like user defined
+cuntions. They do not provide any special thing you have never seen in
+perl before. But they're still good to have, as they help to make the
+code more easy to write and read. These functions are also
+experimental so be careful at the moment of using them.
+
+#+begin_src perl -n
+  use v5.36;
+  use experimental 'builtin';
+  use builtin qw(true false is_bool trim
+                                reftype created_as_string
+                                created_as_number); # There are more builtin functions...
+  my $bool_value = true;
+
+  if ($bool_value) {
+       say "The value is true";
+  } else {
+       say "The value is false";
+  }
+
+  say is_bool($bool_value);	  # Will print "true";
+
+  my $str = "\t\n\r   Hello world\t\r\n";
+  $str = trim($str);	  # This trim() function will remove all the whitespace
+  #characteres defined by unicode (https://perldoc.perl.org/perlrecharclass#Whitespace)
+
+  print $str; # Will print "Hello world", without newlines, tabs, or
+              # carriage returns.
+#+end_src 
+
+These new functions are not the greatest or most useful thing ever,
+but they are still helpful.
+
+** Conclusion
+
+Perl's not dead. At least that's what I kept telling myself because I
+don't want to see this programming language dying in my lifespan. But
+it's pretty cool that they still add new features to Perl 5. Despite
+everything you could say, perl is still alive, but no one uses it, but
+well, no one uses Haskell either. :^)
+** Sources
+- 1. https://perldoc.perl.org/5.36.0/builtin
+- 2. https://perldoc.perl.org/5.36.0/perldelta
+- 3. https://perldoc.perl.org/5.34.0/perldelta 

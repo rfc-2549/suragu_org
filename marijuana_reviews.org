@@ -1,0 +1,172 @@
+#+INCLUDE: "inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+TITLE: Suragu.net
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+#+EXPORT_FILE_NAME: marijuana_reviews.html
+
+* SURAGU’s Marijuana Reviews
+
+Creativity, It’s a known fact that grass increases creativity from
+eight to eleven times. In fact, everyone finds they’re more creative
+stoned than straight. Humans have always been very creative at the
+time to get high. In Spain, stoners were so bored that they found a
+legal loophole that allowed them to legally consume and sell dispense
+Cannabis buds. Since I joined one of those clubs, my vision of a
+fucking plant has changed so damn much. Like everything in
+contemporany society, you have so much choice it’s depressing. In this
+post I will review all the strains I have tried.
+
+But I won’t say “this shit dope” because that would be too boring. And
+I’m also not going to explain how each bud helps you with insomnia,
+anxiety, depression and ADHD because despite recent research shows
+it’s not so darn harmful, i’m not an idiot either.
+
+So I’ll review the buds using Pen & Pixel Graphics album covers. I am
+not rating the weed on how good the album is. Just in how weird the
+cover is.
+
+I’d like to thank my friend Endemic for the idea of making weed
+reviews with album covers, for showing me all this awesome music and
+helping me choose the covers.
+
+Whatever weed you’re smoking. And despite whatever these reviews says
+about each strain, there’s this quote from Kabuto Makai I the Great
+that you should never forget:
+
+“Sea Indica o Sativa me da igual que guay está la keli echandose
+un mai”
+
+** Amnesia (grass)
+
+Amnesia Haze is a classic, is a strain that anyone who has been
+smoking real weed for more than 2 minutes has tried. With more than
+20% of THC, the shit will get anyone high. I will give this strain the
+rating of DJ Screw - The Legend.
+
+[[./img/covers/thelegend.jpg]]
+
+DJ Screw in the sky with a skull behind him it’s something I could
+have never thought of. And going to a cannabis club is also something
+I would have never thought of. I also find it pretty funny that
+there’s a car with Screw by its side.
+
+** Amnesia (Hash)
+
+Advantages of going to a Cannabis Social Club is that you know that
+you’re smoking quality grass and quality hash. The hash here is made
+by the dudes who work at the club, not by a moor sweating in his
+room. So it has a very high quality.
+
+The thing with hash is that it is hash. Too strong for some. But me?
+It only leaves me thinking very weird funny things and I’m so relaxed
+I can’t move. Then I move to some kind of backrooms. In which I find
+myself listening to whatever Antonio Recio is saying. Great
+experience. Amnesia Hash deservers nothing less than Lil Keke - The
+commision
+
+[[./img/covers/thecommision.jpg]]
+
+Where do I start? Where are them? First time I thought it I felt like
+this was a GTA San Andreas mission. Like the dudes are in the Four
+Dragons Casino. And I like how the dude is peacefully smoking a cigar
+when he got 2 bodyguards. I don’t know. It is pretty surreal.
+
+** Amnesia Hy-Pro
+
+I don’t even know what Hy-Pro means. The friend who sold me this told
+me that it has a shitton of THC. I believe him. It did indeed had a
+shit ton of THC. It was a psychedelic experience. So high I didn’t
+even know my name. I have not felt something similar to that since
+then. So I can give this thing nothing less than Juvenile - 400
+Degrees
+
+[[./img/covers/400degres.jpg]]
+
+I wish I could know where to start with this cover. First we can see
+that they’re in hell. And there’s this dude burning money. and a gold
+watch. Dude’s rich and he’s showing off. Then we can see, similary to
+DJ Screw’s The Legend, a giant face of the same dude in the
+sky. Presumably Juvenile is the devil. If you look both at the left
+and right side, you can see, scot-free, hookers. Why are there hookers
+in hell? I can’t tell. Then you have the Parental Advisory sticker. I
+couldn’t have known.
+
+** Chocolope
+
+Chocolope is a Sativa-Dominant strain. Marijuana journalists says that
+it has a sweet flavour, tasting simillary to chocolate. In my
+experience, it just tasted like marijuana smoke. I’ve had better highs
+in my life. Nevertheless Chocolope is a good strain that gives a good
+effect. Used it to saw Perturbator live and had a great
+experience. The Chocolope deserves Three 6 Mafia - The end
+
+[[./img/covers/theend.jpg]]
+
+I don’t even know how to explain this cover. What are they on? Is that
+a car? A giant stereo? I genuinely can’t tell. But for some reason
+they’re into outer space and you can see the earth behind them. The
+earth is exploding. Maybe it is trying to say that only Three 6 Mafia
+survived the apocalypse by riding a giant stereo. Riding a giant
+stereo to outer space is something that could only happen in Memphis,
+Tennesse.
+
+** Unknown Indica Strain
+
+We got a Special Joint for this mysterious strain we can’t remember
+the name of. We have vague indications that the strain name was
+“Wedding cake”. Thing is that we thought that C. Indica were for
+pussies. We were so damn wrong. We were nailed to the couch for at
+least 15 minutes. To this thing I can only give SSUR - Guerrillas in
+the midst
+
+[[./img/covers/guerrilla.jpg]]
+
+Why does the Che Guevara look like a Monkey, why are there hookers if
+they’re in the guerrilla. What’s up with the explosion, what’s with
+all the money? I’d frame this cover if I could.
+
+** Terps (Hash)
+
+It is impossible for a Allah’s Follower to make bad hash. These
+“Terps” is dry extraction of hash. I don’t know what “Dry” means. My
+Marijuana Master doesn’t know what “Dry” is. So I just asume it is
+just zoomer expression to say that a hash is good. But to answer the
+question if “Was it good?” The answer is the following picture:
+
+[[./img/covers/greatesthits.jpg]]
+
+We smoked this hash mixed with Weed Marijuana. When we left the CSC,
+we were in another dimension. Sadly we had to catch the bus later. We
+were there and all of us started to feel exagerately dizzy. I don’t
+rememebr anything that happened in the hour of bus. I just remember
+that I was listening to some music, I can only rememeber “My mind went
+blank” my DJ Screw (The Legend). Then they woke me up. First thing I
+see is a bottle full of vomit.
+
+** Santa Sativa
+
+#+begin_quote
+santa: 1. adj sacred; hallowed: holy ground
+#+end_quote
+Santa Sativa is a Sativa Dominant Weed Marijuana strain. Relatively
+high THC and low CBD. First time we tried this the Terps Incident
+happened. So the weed must have been good shit. Then we smoked this
+shit and unbeliable things happened. Everyone I thought to be Cannabic
+Senseis said this strain was one of the best herbs they have ever
+consumed. Thus, this strain deserves nothing less than: Snoop Dogg -
+Da Game Is To Be Sold. Not To Be Told.
+
+[[./img/covers/dagame.jpg]]
+
+This masterpiece of the contemporany art is deleightful for our
+eyes. We can see the motherfucking d-o double g holding a walking
+stick made from gold. For undisclosed reasons. He is outside the
+“Snoop World” (See Montana Management Co.) The thing is that his
+mansion looks like a fucking castle you’d see in Disney
+World. Perspective fucks with us so much in this one. As he is behind
+Snoop World mansion, he’s sitting in the bonnet. Smoking what seems to
+be a Swisher Sweet and his arm is in another car. There are also three
+dogs in the pictures with shining diamonds.

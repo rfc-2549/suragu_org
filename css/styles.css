@@ -1,0 +1,65 @@
+body {
+	background-color: black;
+	font-family:monospace;
+	background-image: url(../img/stars.png);
+
+}
+h1, h2, h3, h4, h5, h6, p {
+	color: white;
+}
+
+.content {
+	position: relative;
+	margin-left: 0px;
+	width: 100%;
+	right: -130px;
+	max-width: calc(100% - 130px);	
+}
+
+.container {
+	border-style:solid;
+	border-color:#c9423f;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.cat_image {
+	border-style: solid;
+	border: 1px solid purple;
+	border-left: 0px;
+	border-top: 0px;
+	border-right: 0px;
+	
+}
+.button > a {
+	text-decoration: none;
+	font-weight: bold;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 16px;
+	color: #6a0606;
+	margin: auto;
+	
+}
+.button {
+	border: 1px;
+	border-style: solid;
+	width: 120px;
+	border-color: purple;
+	margin: 2px;
+	text-align: center;
+}
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 125px;
+	height: 100%;
+	transition: all 0.5s ease;
+	border: 1px solid red;
+	border-top: 0px;
+	border-left: 0px;
+	background-color: rgba(42, 20, 41, .5);
+	
+}
