@@ -1,0 +1,158 @@
+// Fonts definition
+
+@font-face {
+	font-family: monospaced_code;
+	src: url("/static/terminus.woff");
+}
+
+// Variables
+@cyan: #009090;
+@click: #003b3b;
+@banner_alpha: rgba(106,231,137,0.1);
+@banner: rgb(106,231,137);
+@cool_red: #94000c;
+@cool_click: #99000c;
+
+// Functions
+.border_red {
+	border-style:solid;
+	border-color:@cool_red;
+}
+
+.border_green {
+	border-style:solid;
+	border-color: @banner;
+}
+
+// Stylesheet for mobile devices:
+@media screen and (max-width: 800px) {
+	.sidebar {
+		overflow:hidden;
+		position:relative;
+		top:0;
+		left:0px;
+		right:0px;
+		background-color: @banner_alpha;
+		border-color: @cool_click;
+		border-bottom-style: outset;
+		width:auto;
+		margin-bottom: 10px;
+		.button {
+			float: left;
+		}
+	}
+	.button {
+		position:static;
+		left: 125px;
+		bottom: 0;
+	}
+	.container, .outline-2 {
+		padding: 10px;
+		margin-bottom: 10px;
+		position: relative;
+		.border_red();
+	}
+	p {
+		max-width: 90%;
+		overflow: auto;
+	}
+
+	
+}
+
+// Stylesheet for desktop
+@media screen and (min-width: 801px) {
+	.sidebar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 125px;
+		height: 100%;
+		transition: all 0.5s ease;
+		background-color: @banner_alpha;
+		border: 1px solid @banner;
+		border-top: 0px;
+		border-left: 0px;
+	}
+	.content {
+		position: relative;
+		margin-left: 0px;
+		width: 100%;
+		right: -130px;
+		max-width: 100% - 130px;
+	}
+
+	.container, .outline-2 {
+		padding: 10px;
+		margin-bottom: 10px;
+		.border_red();
+	}
+	p {
+		max-width: 65%;
+		overflow: auto;
+	}
+
+}
+
+
+/* Common for desktop and mobile */
+body {
+	background-color: black;
+	font-family:monospace;
+	background-image: url(../img/stars.png);
+	overflow-x: hidden;
+
+}
+h1, h2, h3, h4, h5, h6, p, ul, li, pre, blockquote {
+	color: white;
+}
+
+
+a {
+	color: @cool_click;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover {
+	color: gray;
+	text-decoration: underline;
+}
+
+.src {
+	background-color: black!important;
+	padding: 5px;
+	margin: 2px;
+	.border_red();
+}
+
+.cat_image {
+	border-style: solid;
+	border: 1px solid ;
+	border-left: 0px;
+	border-top: 0px;
+	border-right: 0px;
+	
+}
+.button {
+	border: 1px;
+	border-style: solid;
+	width: 120px;
+	margin: 2px;
+	text-align: center;
+	
+	a {
+		text-decoration: none;
+		font-weight: bold;
+		margin-left: auto;
+		margin-right: auto;
+		font-size: 16px;
+		color: @banner;
+		margin: auto;
+
+	}
+	.border_green();
+}
+
+code {
+	font-family: monospaced_code
+}
