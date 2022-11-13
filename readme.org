@@ -21,3 +21,8 @@ attribute to wherever this repo is and eval the following snippet
 and run =M-x make-suragu=. Resulting files will be in
 =~/repos/suragu_org/out_html= (or wherever =publishing-directory= is
 pointing to.)
+
+You'll also have to use less to generate the .css file from the given
+.less file. You can use =lessc=, an online less to css converter, or
+whatever you want. Thing is that you have to convert the .less file to
+.css.
