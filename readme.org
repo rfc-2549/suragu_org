@@ -1,0 +1,23 @@
+* suragu.net source files
+** building
+clone this repo in =~/repos/suragu_org= or change the =base-directory=
+attribute to wherever this repo is and eval the following snippet
+#+begin_src emacs-lisp
+(setq org-publish-project-alist
+     '(("suragu.net"
+            :base-directory "~/repos/suragu_org/"
+            :publishing-directory "~/repos/suragu_org/out_html"
+            :section-numbers nil
+            :publishing-function org-html-publish-to-html
+            :table-of-contents nil
+            :recursive t
+            )))
+
+(defun make-suragu ()
+     (interactive)
+     (org-publish "suragu.net")
+#+end_src
+
+and run =M-x make-suragu=. Resulting files will be in
+=~/repos/suragu_org/out_html= (or wherever =publishing-directory= is
+pointing to.)
