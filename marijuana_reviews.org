@@ -3,7 +3,7 @@
 #+OPTIONS: html-postamble:nil
 #+OPTIONS: html-style:nil
 #+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
-#+TITLE: Suragu.net
+#+TITLE: Suragu.net - Marijuana Reviews
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 #+EXPORT_FILE_NAME: marijuana_reviews.html
 
