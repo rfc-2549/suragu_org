@@ -21,7 +21,7 @@ As if someone cared, here's my neofetch.
 ** About the person
 
 I'm a [[./img/fermin_trujillo.jpg][freelancer]] from Spain, I also make computer things. You can find
-me in [[https://github/dudemanweed][GitHub]] or [[https://codeberg.org/dudemanweed][Codeberg]] (or the barely-working, self-hosted [[https://git.suragu.net][cgit
+me in [[https://github.com/dudemanweed][GitHub]] or [[https://codeberg.org/dudemanweed][Codeberg]] (or the barely-working, self-hosted [[https://git.suragu.net][cgit
 instance]] ).
 
 
