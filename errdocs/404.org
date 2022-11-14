@@ -1,4 +1,4 @@
-#+INCLUDE: "inc/header.html" export html
+#+INCLUDE: "../inc/header.html" export html
 #+options: toc:nil
 #+OPTIONS: html-postamble:nil
 #+OPTIONS: html-style:nil
