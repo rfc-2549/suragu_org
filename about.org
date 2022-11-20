@@ -24,4 +24,8 @@ I'm a [[./img/fermin_trujillo.jpg][freelancer]] from Spain, I also make computer
 me in [[https://github.com/dudemanweed][GitHub]] or [[https://codeberg.org/dudemanweed][Codeberg]] (or the barely-working, self-hosted [[https://git.suragu.net][cgit
 instance]] ).
 
-
+** Projects
+Some projects I have worked on are [[https://git.suragu.net/sakisafe.git][sakisafe]], a simple file sharing
+program and it's terminal interface. There are also the [[https://git.suragu.net/k9core.git][coreutils]] I
+wrote and a lot of [[https://git.suragu.net/love_sosa][scripts]] I have written during the time. The source
+code of my blog is available at [[https://git.suragu.net/the_pit.git][the_pit]]
