@@ -9,10 +9,6 @@
 
 * Fear and loathing in Linux (Or BSD user tries Linux)
 
-If you enjoy this article, please consider donating:
-https://liberapay.com/raoul11. For questions or comments on this
-article feel free to reach me out at teru-sama [at] riseup [dot] net.
-
 One day I said "I want to die with FreeBSD installed", and I still do,
 FreeBSD is a marvellous operating system that should be the final word
 in operating systems. Sadly the other day when I bought a new computer
