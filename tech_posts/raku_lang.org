@@ -83,7 +83,7 @@ In this example, the =$l= is an instance of the class Lock, and we're
 using to protect the [[https://en.wikipedia.org/wiki/Critical_section][critical section]] of the threads (when they modify
 a shared variable, the =$counter= variable).
 
-But threads are an extremely complicated subject, humanity likes to
+Threads are an extremely complicated subject, humanity likes to
 make everything more complicated but sometimes they make things
 simpler, this is the case of the =start= and =await= blocks in
 Raku. Allowing painless parallelism:
@@ -135,7 +135,7 @@ use clases from Perl. And converts it to Raku classes.
 ** Calling C functions
 
 This is a pain to do in Perl, it isn't a pain in Raku as we have the
-=NativeCall= module, which makes calling C functions very easily. So
+=NativeCall= module, which makes calling C functions damn easily. So
 creating C libs bindings to raku shouldn't be much of a pain.
 
 #+begin_src raku
