@@ -26,3 +26,4 @@ These articles are sorted from oldest to newest.
 4. [[./fear_and_loathing_in_artix.html][Fear and Loathing in Artix (or BSD user tries Linux)]]
 5. [[./bsd_make.html][Using BSD make as build system]]
 6. [[./modern_perl.html][Perl in CURRENT_YEAR]]
+7. [[./raku.html][The Raku programming language]]

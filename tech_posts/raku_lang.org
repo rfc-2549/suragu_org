@@ -1,0 +1,155 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+options: ^:{}
+#+TITLE: SURAGU - raku lang
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+#+EXPORT_FILE_NAME: raku.html
+* The Raku programming language
+Raku, formerly Perl 6, is a programming language in the family of the
+Perl programming languages (the family consists on what mortals know
+as "perl" and "raku"). This language has influence by *Perl, Haskell*
+and Smalltalk, and have influenced *Perl and Haskell*. If I had to
+define this programming language, it would be "perl on drugs". You
+could call this language "Gonzo Perl". In this post I intend to make a
+brief introduction to this awesome programming language.
+
+I am implying that if you have the most minimum desire to learn the
+Raku programming language, you already know a programming language. If
+Raku is your first language, man, you have all my respect. But I don't
+think Raku is no one's first language, so I won't bother on explaining
+what an =if= does. Or how to print stuff. This post is serious and we
+are going to do actual serious stuff.
+
+** Multithreading, parallelism and concurrency
+
+Raku has native support for Threads and async functions, there is the
+=Thread= class which allows us mortals to interact to your operating
+system's thread API. This is the most primitive way of multitasking
+and it's not the recommended way to do multitasking in Raku, but I'll
+give an example anyways.
+
+
+#+begin_src raku
+  #!/usr/bin/rakudo
+  my $t1 = Thread.start(-> {say "This was printed in a separate thread"});
+  my $t2 = Thread.start(-> {say "Yet another thread"});
+  sleep(1);
+  say "This is printed from outside the thread";
+  $t1.join();
+  $t2.join();
+#+end_src
+
+So in this code snippet we are declaring 2 objects, instances of the
+class "[[https://docs.raku.org/type/Thread][Thread]]", We can give it a number of attributes but the main
+attribute is a subroutine, which can be anonymous or not, which is
+what the Thread is going to do.
+
+Programmers experienced with C might be asking where's *everything*
+related to threads. Well, as mentioned before, the thing with Raku is
+that Threads is not the main way of doing parallelism, but in any
+case, Raku has atomic operations, locks, mutual exclusion... Following
+example is the usage of the [[https://docs.raku.org/type/Lock][Lock]] class
+
+#+begin_src raku
+  #!/usr/bin/rakudo
+
+  my $counter = 10;
+  my $l = Lock.new;
+
+  my $t1 = Thread.start(
+       -> {
+            for 1..5000 {
+                 $l.protect({$counter++});
+            }
+       }
+  );
+
+  my $t2 = Thread.start(
+       -> {
+            for 1..5000 {
+                 $l.protect({$counter--});
+            }
+       }
+  );
+  $t1.join();
+  $t2.join();
+  say $counter;
+#+end_src
+
+In this example, the =$l= is an instance of the class Lock, and we're
+using to protect the [[https://en.wikipedia.org/wiki/Critical_section][critical section]] of the threads (when they modify
+a shared variable, the =$counter= variable).
+
+But threads are an extremely complicated subject, humanity likes to
+make everything more complicated but sometimes they make things
+simpler, this is the case of the =start= and =await= blocks in
+Raku. Allowing painless parallelism:
+
+#+begin_src raku
+  #!/usr/bin/rakudo
+
+  my $promise = start {
+       sleep(1);
+       say "done doing [THING]";
+       True;
+  }
+  say "Hello world!";
+
+  # Promise will wait 2 seconds and then print done doing THING,
+  # the program will print "Hello world!" before.
+
+  my $res = await($promise); # Wait for the promise to be fullfied.
+  say $res; # "True"
+#+end_src
+
+The =start= block returns a [[https://docs.raku.org/type/Promise][Promise]] object, so you can do things with
+it. When you're done doing other stuff and now you need the value of
+the thing, you can use the =await= subroutine to wait for the
+asynchronouns block to finish and use it's return value. The =await=
+functions can have a parameter either a single promise or an array of
+promises, if the case is the later, =await= will return an array with
+all the return values from all the promises on the array.
+
+** Using Perl modules
+
+Despite it is not a design goal of Raku, raku is capable of runningn
+Perl5 modules using the =Inline::Perl5= module. Despite the name, it
+does not allow calling Perl code from Raku like C code in C++. It can
+use clases from Perl. And converts it to Raku classes.
+
+#+begin_src raku
+  #!/usr/bin/rakudo
+
+  use LWP::UserAgent:from<Perl5>;
+
+  my $ua = LWP::UserAgent.new();
+  my $res = $ua.get("https://suragu.net");
+
+  say $res.decoded_content; # Will print this site's index.
+  say $ua.raku; # See how the $ua agent was initialized.
+#+end_src 
+
+** Calling C functions
+
+This is a pain to do in Perl, it isn't a pain in Raku as we have the
+=NativeCall= module, which makes calling C functions very easily. So
+creating C libs bindings to raku shouldn't be much of a pain.
+
+#+begin_src raku
+  #!/usr/bin/rakudo
+
+  use NativeCall;
+  # Import the puts() function form the libc. This funciton takes a
+  # string as parameter and returns an 32 bit integer.
+  sub puts(Str --> int32) is native('c',v6) {*};
+  # Import the write() syscall.
+  sub write(int32, Str , int32) is native('c',v6) {*};
+
+  puts("Hello world!");
+  my $str = "This will be written to stdout";
+  # Remember, the file descriptor of STDOUT is always 1.
+  write(1, $str, $str.encode.bytes);
+#+end_src
