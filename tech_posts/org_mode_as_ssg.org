@@ -6,6 +6,7 @@
 #+options: ^:{}
 #+TITLE: suragu.net - Org-mode as a Static Site Generator
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+
 * org-mode as a Static Site Generator
 Created: 2022-06-14
 Last updated: 2022-06-14
@@ -19,10 +20,6 @@ org-mode was able to do this perfectly. Not much flaws were found in
 this process.
 
 And yes, this article was written in =org-mode=.
-
-If you enjoy this article, please consider donating:
-[[https://liberapay.com/raoul11][https://liberapay.com/raoul11]]. For questions or comments on this
-article feel free to reach me out at teru-sama [at] riseup [dot] net.
 
 ** The basics
 
@@ -133,20 +130,34 @@ compile my website just well:
   (setq org-publish-project-alist
        '(("suragu.net"
               :base-directory "~/repos/suragu_org/"
-              :publishing-directory "~/repos/suragu_org/out_html"
+              :publishing-directory "~/repos/suragu"
               :section-numbers nil
               :publishing-function org-html-publish-to-html
               :table-of-contents nil
               :recursive t
               )))
 
-  (defun make-suragu ()
+  (defun sosa/make-suragu ()
        (interactive)
        (org-publish "suragu.net")
 #+end_src
 
 And that's it! Everytime I want to recompile this website I just have
 to run =M-x make-suragu= and org-publish will do the rest for me!
+** Automatically publishing your site with sshfs
+
+sshfs is a filesystem client based on ssh and FUSE. This means remote
+directories using sshfs. So you can mount your server's webroot in
+your local machine, so publishing sites can be easy if you set the
+=publishing-directory= in the =org-publish-project-alist= to the
+remote mountpoint:
+
+#+begin_src shell
+  sshfs root@192.168.1.57:/var/www/sites/suragu.net ~/repos/suragu
+#+end_src
+So when you run the function to publish your website
+(=sosa/make-suragu= in this case). It will automatically publish to
+the sshfs mounted directory. So your website will be updated.
 ** Conclusion
 =org-mode= is a great markup language that can repleace markdown in most
 tags and also works well as a static site generator. What else do you
