@@ -2,7 +2,7 @@
 #+options: toc:nil
 #+OPTIONS: html-postamble:nil
 #+OPTIONS: html-style:nil
-#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil
 #+TITLE: Suragu.net
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 #+EXPORT_FILE_NAME: about.html
@@ -27,4 +27,4 @@ me in [[https://github.com/dudemanweed][GitHub]] or [[https://codeberg.org/dudem
 Some projects I have worked on are [[https://git.suragu.net/sakisafe.git][sakisafe]], a simple file sharing
 program and it's terminal interface. There are also the [[https://git.suragu.net/k9core.git][coreutils]] I
 wrote and a lot of [[https://git.suragu.net/love_sosa][scripts]] I have written during the time. The source
-code of my blog is available at [[https://git.suragu.net/the_pit.git][the_pit]]
+code of my blog is available at [[https://git.suragu.net/dudemanweed/the_pit.git][the_pit]]
