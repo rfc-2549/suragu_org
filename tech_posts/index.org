@@ -27,4 +27,4 @@ These articles are sorted from oldest to newest.
 5. [[./bsd_make.html][Using BSD make as build system]]
 6. [[./modern_perl.html][Perl in CURRENT_YEAR]]
 7. [[./raku.html][The Raku programming language]]
-
+8. [[./picking_a_linux_distro.html][Picking a Linux distro]]

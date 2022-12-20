@@ -1,0 +1,125 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil 
+#+options: ^:nil
+#+TITLE: suragu.net - picking a linux distro
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+#+EXPORT_FILE_NAME: picking_a_linux_distro.html
+* Picking a Linux distro
+** Introduction
+
+It's kinda ironic how Mr. Stallman want us to use this operating
+system when [[https://gnu.org/distros/free-distros.html][even them can't pick one distro]] (don't take anything that
+gnu.org says seriously). Picking a Linux distro has been hard since
+the beginning of times. Back in the times I was younger, you could
+only pick Ubuntu or Debian, this is because Arch wasn't a meme yet so
+noboby could think they're cooler than a cooler because they use
+Arch. In this post I intend to review all the Linux distros I know so
+maybe a reader can get a conclusion on what distro to use. Never
+forget that, at the core, all distros all the same, but they do not
+want you to know that.
+
+** Debian
+
+Debian is a distribution that has never failed anybody, it has been in
+this irony layer since 1993, created by this dude Ian Murdock who
+sadly "killed himself" after posting anti-cop shit in twitter and
+expressing his reject for systemd.
+
+Debian is a distro that was planed to run on anything and give the
+less ammounts of problem as possible. For this reason, it is also
+popular as a server operating system. It uses the =apt= package
+manager. Everyobody knows about apt, maybe because they already used
+debain or used Ubuntu 10.04 and have a vague memory of the "advanced
+packaging tool". Now to be honest, i've tried a lot of package
+managers and =apt= is simply apoteosically slow. There are also
+alternative frontends to =apt= like =aptitude= and =synapse=.
+
+In the [[https://debian.org/distrib][Debian Distribution]] page you can download many version of the
+ISO, so you can get the best according to your needs. You can download
+a minimal netinstall iso that will ask you whether you want to install
+a graphical interface or not, you can also download a prebuilt iso
+with the desktop environment you like the most. The thing is that
+Debian took "freedom" too seriously so the normal isos do not ship
+with non-free firmware, you can download [[https://cdimage.debian.org/images/unofficial/non-free/images-including-firmware/][images that include non-free
+firmware]].
+
+Surely a recommended distro if you don't mind =apt=.
+
+** Ubuntu
+
+Let's be honest, who uses this besides old men that do not want to use
+Windows and have no time for learning Linux. This distribution is
+garbage, a whole encyclopedia could be written on why Ubuntu sucks so
+much but I've got better stuff to do.
+
+** Arch
+
+I remember that, 5 years ago, I used to be an Arch user, I also
+remember how much problems it gave to me. To stop calling yourself an
+"Arch user" is part of growing up. Arch main features are the "AUR"
+and the rolling release model. "AUR" stands for "Arch User
+Repository", this is a place in which users can write their own
+[[https://en.wikipedia.org/wiki/Arch_Linux#PKGBUILD][PKGBUILD scripts]] which will at the end produce a pacman-compatible
+package to be installed. The AUR is good to install godforsaken
+software no one has ever heard of before.
+
+It's quite comedic, because to install software from AUR, you have to
+pick one of the following: either you clone a git repo and run a weird
+command I do not want to remember because I'm not an Arch user or you
+install an AUR helper, the most popular nowadays is yay, i think. Back
+in my day it was yaourt. The AUR helpers are not available on any of
+the official Arch Linux repositories.
+
+Arch claims to be a lightweight linux distro because it doesn't ship
+with anything, it doesn't ship with a desktop environment or
+anything. Insanely smart people whose parents would be proud of them
+said that this claim is untrue because Arch Linux uses systemd.
+
+** Gentoo
+
+I'm not sure why anyone would use Gentoo over FreeBSD or OpenBSD, the
+BSD ports system is literally Portage but not written in python and
+with a friendly interface anyone could use. The main features are the
+USE flags which is basically global compilations options or something,
+you can do something similar with FreeBSD and OpenBSD without being a
+horrible pain. I do not have many experiences with Gentoo and I think
+every Gentoo user is just coping with the fact that /g/ doesn't think
+that his rice is elite enough.
+
+** Void
+
+Void is the Linux distribution that I use. It is garbage as well. It
+uses the "X Binary Package System" (xbps). It began as a try of Linux
+to mimic OpenBSD, as Void Linux has a preference for =doas=, and it
+used to use LibreSSL instead of OpenSSL but they [[https://voidlinux.org/news/2021/02/OpenSSL.html][regret this choice]]
+and switched back to OpenSSL in Feb 2021. This choice made users mad
+and some of them (no one) switched to Gentoo to continue using
+LibreSSL.
+
+xbps is the fastest package manager that i've seen in a Linux system,
+installing packages is something that will be completed in no time
+under this operating system. Void Linux also uses =runit= instead of
+=systemd=. runit can be a pain in the ass to manage but I've written a
+[[https://git.suragu.net/dudemanweed/rnt][runit wrapper in perl]] so you can control it just like you would
+use =systemctl=.
+
+Void can also be installed using musl but you gotta be a coping
+teenager to use musl instead of glibc, in my opinion, if you install
+an operating system is because you want it to work, not because you
+want to be fixing stuff all the time.
+
+Despite claiming to be a rolling release distro, the gcc version in
+the void repos was 10 for the last 2 years. [[https://github.com/void-linux/void-packages/commit/eb82e2578b1f189e33618ea909e0349d8c48332c][It was updated 3 days ago
+to version 14]]. clang is still in version 12 and don't seem to be
+updated. On the other hand, Arch has up to date packages.
+
+** Artix Linux
+
+[[https://suragu.net/blog/20221108][I already wasted keystrokes talking about this one]]
+
+** Conclusion
+
+Computers were a mistake.
