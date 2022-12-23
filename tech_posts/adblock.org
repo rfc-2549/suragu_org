@@ -1,0 +1,100 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+options: ^:nil
+#+TITLE: suragu.net - network wide ad blocking
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+
+* Local Area Network wide ablocking
+
+They do not want you to know this, but there's something called
+"adblocking", which consists on blocking ads so they do not bother you
+while browsing the internet. This has many advantages such as a less
+dystopic experience of the internet and a faster website loading
+because you *literally cannot* load the ads. There are, as far as I'm
+concerned, /two/ ways of adblocking, the simple and the complex. the
+simple is basically installing ublock origin from your browser's
+webstore and call it a day. The other is to setup a Linux or BSD
+server so you can install Unbound on it and configure it in a way that
+it blocks all the domains that websites use to load ads. As you can
+see, there's a long road between the former and the later.
+
+This post will redact my experiences doing the complex solution. I use
+OpenBSD with an apparently incompatible wireless network card. So I
+could not do the correct thing to do, which is to setup a router whose
+DHCP daemon sets the default DNS server to the address of the router,
+which runs this cool unbound that blocks ads.
+
+** Installing unbound
+
+As mentioned before, I'm running OpenBSD in my server, OpenBSD comes
+with unbound preinstalled I did not have to do anything, Linux users
+probably can install unbound with the default package manager.
+
+** Configuring unbound
+
+There's this [[https://vermaden.wordpress.com/2020/11/18/unbound-dns-blacklist/][cool tutorial]] on how to setup an adblocking local DNS
+server under FreeBSD, this guide uses a script that generates a DNS
+list with hosts to be blocked. But as I'm a good person I've uploaded
+the resulting [[https://ss.suragu.net/f/1ij6s/blacklist.conf][file to my server]] so you can just download it.
+
+Then, you have to edit the unbound config file, under OpenBSD it is in
+=/var/unbound/etc/unbound.conf= like this:
+
+#+begin_src conf-space
+  server:
+       # Bind to localhost and external address
+       interface: 127.0.0.1
+       interface: 192.168.1.57
+       interface: ::1
+       # Allow requests from the LAN and the localhost
+       access-control: 0.0.0.0/0 refuse
+       access-control: 192.168.0.0/16 allow
+       access-control: 127.0.0.0/8 allow
+       access-control: ::0/0 refuse
+       access-control: ::1 allow
+       # Security reasons
+       hide-identity: yes
+       hide-version: yes
+
+       # Perform DNSSEC validation.
+       #
+       auto-trust-anchor-file: "/var/unbound/db/root.key"
+       val-log-level: 2
+
+       # Synthesize NXDOMAINs from DNSSEC NSEC chains.
+       # https://tools.ietf.org/html/rfc8198
+       #
+       aggressive-nsec: yes
+
+  # Bind the remote control socket to a UNIX socket so only the server
+  # can control it
+  remote-control:
+       control-enable: yes
+       control-interface: /var/run/unbound.sock
+	
+  # The file you got
+  include: /var/unbound/etc/blocklist.conf
+#+end_src
+
+After doing this, unbound should be ready to run and can be started
+with =rcctl enable unbound && rcctl start unbound=
+
+** Configuring devices to use the DNS server
+
+As mentioned before, the correct way to do this is to setup the
+machine as a router, my T400 has an intel card that does not support
+OpenBSD too good, I still like my T400 despite its handicap, a
+workaround for this is to setup *in each device you want to connect to
+your LAN*. So basically you have to know how to setup a static IP
+address. The most basic configuration for a static IP address that
+should work in a normal scenario is the following:
+
+#+begin_src text
+address: 192.168.1.whatever
+mask:   255.255.0.0 (or 255.255.255.0 if that doesn't work)
+gateway: 192.168.1.1 (or 192.168.0.0, depending on your router)
+dns server: the ip address of your server running unbound
+#+end_src

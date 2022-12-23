@@ -12,12 +12,6 @@
 This (very alternative) website exists for the sole purpose of
 existing. This website has no objetive purpose.
 
-As if someone cared, here's my neofetch.
-
-#+begin_export html
-<a href="img/as_if_someone_cared.png"><img src="img/as_if_someone_cared_thumb.jpg"></a>
-#+end_export
-
 ** About the person
 
 I'm a [[./img/fermin_trujillo.jpg][freelancer]] from Spain, I also make computer things. You can find
@@ -28,3 +22,10 @@ Some projects I have worked on are [[https://git.suragu.net/sakisafe.git][sakisa
 program and it's terminal interface. There are also the [[https://git.suragu.net/k9core.git][coreutils]] I
 wrote and a lot of [[https://git.suragu.net/love_sosa][scripts]] I have written during the time. The source
 code of my blog is available at [[https://git.suragu.net/dudemanweed/the_pit.git][the_pit]]
+
+** Hotlinking
+
+if you feel like sharing this website without anything in return, you
+can use the following banner:
+
+[[./img/banner_suragu.png]]
