@@ -9,13 +9,11 @@
 
 * About
 
-This (very alternative) website exists for the sole purpose of
-existing. This website has no objetive purpose.
-
 ** About the person
 
-I'm a [[./img/fermin_trujillo.jpg][freelancer]] from Spain, I also make computer things. You can find
-me in [[https://github.com/dudemanweed][GitHub]] or [[https://codeberg.org/dudemanweed][Codeberg]] (self-hosted [[https://git.suragu.net][gitea instance]]).
+Why are you reading this? I'm not that interesting, i'm just a guy who
+writes blogposts and software. You can do that too. Stop caring so
+much about others and start caring about yourself.
 
 ** Projects
 Some projects I have worked on are [[https://git.suragu.net/sakisafe.git][sakisafe]], a simple file sharing
