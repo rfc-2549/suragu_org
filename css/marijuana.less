@@ -48,6 +48,7 @@
 	}
 	.container, .outline-2 {
 		padding: 10px;
+		background-color: rgba(0,0,0,0.9);
 		margin-bottom: 10px;
 		position: relative;
 		.border_red();
@@ -84,6 +85,7 @@
 
 	.container, .outline-2 {
 		padding: 10px;
+		background-color: rgba(0,0,0,0.9);
 		margin-bottom: 10px;
 		.border_red();
 	}
@@ -99,9 +101,11 @@
 body {
 	background-color: black;
 	font-family:monospace;
-	background-image: url(/img/coche_screw.png), url(/img/screw.png), url(/img/stars.png);
+	background-image: url(/img/coche_screw.png), url(/img/screw.png), url(../img/bg3.png);
 	background-repeat: no-repeat, no-repeat, repeat;
 	background-position: bottom left, top right, left;
+	background-size: auto, auto, 100%;
+	background-attachment: auto, auto, fixed;
 	overflow-x: hidden;
 }
 h1, h2, h3, h4, h5, h6, p, ul, li, pre, blockquote {
