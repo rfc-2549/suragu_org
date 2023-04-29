@@ -9,16 +9,17 @@
 #+EXPORT_FILE_NAME: index.html
 
 * suragu.net
-Welcome to suragu.net! My personal website. In which you can read my
-philosophical posts or my posts about technology.
+Welcome to SURAGU, a website in which I talk about anything that comes
+to my mind, reviews, technology, and filler content such as the media
+I have consumed.
 
-Everything on this website is under the Do What the Fuck You Want To
-Public License
+Everything that I have created is under the WTFPL or the public domain.
 
 * Contact
+If you want to contact me because of any reason, I have an email:
+chief_keef at riseup dot net, or you can join =irc.suragu.net= and
+join =#montepinar=.
 
-You can contact me through email: chief_keef at riseup dot net or
-join =#montepinar= in =irc.suragu.net=
 * Donate
 
 If you want to help me to defraud the treasury, send cryptocurrencies

@@ -6,6 +6,7 @@
 #+TITLE: suragu.net - Tech posts
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
 #+EXPORT_FILE_NAME: index.html
+#+author: Roberto Cornell
 
 * suragu.net tech posts
 
@@ -29,3 +30,5 @@ These articles are sorted from oldest to newest.
 7. [[./raku.html][The Raku programming language]]
 8. [[./picking_a_linux_distro.html][Picking a Linux distro]]
 9. [[./adblock.html][LAN adblocking]]
+10. [[./ssh_holyness.html][Insane stuff you can do in ssh]]
+11. [[./void.html][If IQ was given like Dopamine, Arch Linux would not exist]]

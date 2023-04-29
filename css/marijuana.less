@@ -8,10 +8,11 @@
 // Variables
 @cyan: #009090;
 @click: #003b3b;
-@banner_alpha: rgba(106,231,137,0.1);
-@banner: rgb(106,231,137);
-@cool_red: #94000c;
-@cool_click: #99000c;
+@banner_alpha: rgba(0,0,0,0.5);
+@button_bg: rgba(0,0,0,0.8);
+@banner: rgb(97,50,97);
+@cool_red: #610061;
+@cool_click: #6100ff;
 
 // Functions
 .border_red {
@@ -19,9 +20,15 @@
 	border-color:@cool_red;
 }
 
-.border_green {
-	border-style:solid;
+.border_purple {
+	border-style: double;
+	max-width: 90%;
 	border-color: @banner;
+}
+
+hr {
+	color: @banner;
+	margin: -1px;
 }
 
 // Stylesheet for mobile devices:
@@ -87,6 +94,13 @@
 		padding: 10px;
 		background-color: rgba(0,0,0,0.9);
 		margin-bottom: 10px;
+		background-image:  url(/img/screw.png);
+		background-repeat: no-repeat;
+		background-position: top right;
+		background-size: auto;
+		background-attachment: local;
+		overflow-x: hidden;
+		
 		.border_red();
 	}
 	p {
@@ -101,11 +115,11 @@
 body {
 	background-color: black;
 	font-family:monospace;
-	background-image: url(/img/coche_screw.png), url(/img/screw.png), url(../img/bg3.png);
-	background-repeat: no-repeat, no-repeat, repeat;
-	background-position: bottom left, top right, left;
-	background-size: auto, auto, 100%;
-	background-attachment: auto, auto, fixed;
+	background-image: url(/img/coche_screw.png), url(../img/bg3.png);
+	background-repeat: no-repeat, no-repeat;
+	background-position: bottom left, left;
+	background-size: auto, auto, auto;
+	background-attachment: fixed;
 	overflow-x: hidden;
 }
 h1, h2, h3, h4, h5, h6, p, ul, li, pre, blockquote {
@@ -139,8 +153,6 @@ a:hover {
 	
 }
 .button {
-	border: 1px;
-	border-style: solid;
 	width: 120px;
 	margin: 2px;
 	text-align: center;
@@ -154,8 +166,13 @@ a:hover {
 		color: @banner;
 		margin: auto;
 
+	}	
+	a:hover {
+		color: @cool_click;
 	}
-	.border_green();
+	background-color: @button_bg;
+
+	.border_purple();
 }
 
 code {

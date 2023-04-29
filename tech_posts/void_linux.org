@@ -1,0 +1,201 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+TITLE: suragu.net - Void Linux is the best distro that exists.
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+#+EXPORT_FILE_NAME: void.html
+#+author: Roberto Cornell
+* If IQ was given like dopamine Arch Linux would not exist.
+
+Linux sucks, computers were a complete mistake, the humankind would be
+better without computers, we would have not known about many things
+and we would have not created man-made horrors beyond your
+comprehesion.
+
+Sadly, Ted did not accomplish his goal and we are still forced to use
+computers, I think that computers are like drugs, they should not be
+used. But if you use them anyways, you have to do them like God
+intended them to be done. Using Windows is the bad way, using Linux is
+the correct way to use computers, and using Linux will also work as
+harm reduction for your years of life. Because despite Linux never
+works, at least it lets you do whatever you want, unlike MacOS or
+Windows.
+
+I don't have to explain operating systems, or what a Linux distro is,
+if you're on suragu.net I'm assuming you're at least running
+Debian. If you're running Windows, how the hell did you find this
+website?
+
+Anyways, all distros out there suck for distros usage, but the ones
+that suckless is Void Linux. A product from my country, Void Linux
+does not seem to be affected by the Ministry of Equalty[fn:1].
+
+Void Linux is, like Arch, a rolling-release distro, this means that it
+doesn't give a shit about unstability and everything is your
+responsability. The packages are usually at their most recent version,
+in worst case scenarios you'll only have to wait 2-3 days to install
+its most recent versions. But I'm not selling this shit either, I did
+not say that Void was a good distribution, I said it sucks less, but
+for example, it took, for some reason, 2 years for them to update gcc
+from 10 to 12.
+
+[[../img/gcc-update.png]]
+
+I don't know why it took them so long, but at least they did.
+
+** What's so good about Void Linux in contrast to $DISTRO?
+#+begin_export html
+<div style="border-style: dashed; color: yellow;">
+<p>
+<i>Disclaimer: If you use gentoo, you might not find this section
+useful as you should be attended by professionals of the mental health
+sectors rather than by suragu.net</i>
+</p>
+</div>
+#+end_export
+
+I am going to compare Void to the other 2 distros that exists: debian
+and Arch.
+
+Archfags have always been a thing, I used to use Arch, the differences
+between Void and Arch are mainly 2: Void uses runit (instead of
+systemd like Arch) and Arch uses the pacman package manager whereas
+Void uses the X Binary Package System. Which is a good package manager
+which has never filled me with an urge to cut my wrists and then kill
+myself on Twitch.
+
+The thing is that I have already phased out the Linux ultra autism and
+I no longer use Void because >systemd but because I genuinely prefer
+the xbps package manager to fuckman for completely understandable
+reasons. For example:
+
+- the "-y" flag means "yes" like in any other sane piece of
+  software. For some reason Arch dev thought that "-y" means "--refresh"[fn:2]
+- When you query the repos, xbps gives a sane, one liner output while
+  pacman gives you two outputs
+#+CAPTION: Sane, one line, grepeable output
+[[../img/xbps-query_output.png]]
+#+CAPTION: Insane, filthy, schizophrenic 2 lines output
+[[../img/pacman-query_output.png]]
+
+- xbps is way faster unlike pacman, it installs packages faster for
+  some reason, depsite both xbps and pacman use the same compression
+  algorithm for its packages. xbps is still faster for unknown
+  reasons.
+  
+The only good thing about Arch Linux packages if that the -dev
+packages does not exist, like in BSD systems, I wish all distros devs
+knew that -dev packages are useless and header files should be
+included with the share objects, some libraries also come with the .a
+but that's another kind of question with another kind of answer.
+
+Now, on Debian, well I'd like to shit on debian, actually no, because
+Debian has NEVER failed me. And it is still my favorite Linux distros
+for things that are not desktops, debian is the second best Linux
+distro out there, which I know as the old reliable, but here are some
+points that can be made to say that Void is better than Debian (but if
+you use Debian as desktop you've got my respect, unless you have a
+Lain wallpaper)
+
+- xbps is faster
+- I could say "up to date packages" but there always have been Debian
+  Sid which is basically a rolling release Debian, which is not
+  suitable for servers because "unstability" but works well in
+  desktops.
+
+  Now, you are right that writing =xbps-install= =xbps-remove= and
+  =xbps-query= is a pain and it's an idiocy, you're right, i don't
+  know why they did a program for everything instead of a
+  subcommand. Unix Philosophy I guess, in any case, enjoy this code
+  snippet for your shell:
+
+  #+begin_src bash
+    alias xi="doas xbps-install -y"
+    alias xq="xbps-query"
+    alias xr="doas xbps-remove"
+    # Saved me from suicide
+  #+end_src
+
+** xbps-src
+
+Archfags are addicted to this substance known as "3-MeO-AUR", which is
+a dangerous neurodegenerative drug that makes you think that it is ok
+for you to install a second package manager just to install 3rd-party
+packages (and then they're managed by the same package manager but you
+have to update them using the second package manager but you have to
+remove them using the first package manager). 3-MeO-AUR also
+degenerates your brain to the point that you think that Arch is a good
+operating system.
+
+Well, Void Linux main dev used to be a NetBSD dev, so there is
+influence of NetBSD in void, xbps is highly inspired in the pkgsrc
+port systems, so you can also build packages from source on Void Linux
+like if you were in Gentoo, I don't know why someone would do that,
+but the thing is that you can. You can also install packages that are
+not in the repos using xbps-src, like Discord, Spotify and other
+evilnesses. For this you only clone the [[https://github.com/voidlinux/void-packages][void-packages]] repository and
+run the commands on the readme, =./xbps-src binary-bootstrap= and then
+you can do =./xbps-src package <PACKAGE_NAME>=. You can appened CFLAGS
+to the compilation like if you were in Gentoo or FreeBSD. Which is
+pretty epic, I have never done it because my autism doesn't go that
+far, but if you ask if you can, yes, you can.
+
+And if there's a package that is in the AUR but not on Void Repos,
+well, probably you don't really need it and/or you can just type
+"make" and "make install" to install that piece of software you
+want. But obscure software is usually in void main repos for some
+reason, hell, you can even install emerge, apt and pacman through the
+official repos, not sure why anyone would do that, but again, if you
+ask if you can, indeed, you can. You can also change the configure
+flags by editing the package template file, this is retarded, Gentoo
+has the USEFLAGS and FreeBSD asks you for the compile options with a
+TUI. But, again, I never said Void Linux was a *good* operating system
+
+** It is like a BSD operating system
+
+The reason of why Void Linux exists is because one guy got a pipe,
+made a sandwich and /entered the void/. It was coping with the fact
+that BSD did not have much hardware support but wanted to use BSD
+features, so close in the core Void Linux is somewhat similar to a BSD
+operating system. Even more in the past when it used LibreSSL instead
+of OpenSSL, and it was the *first linux distro which truly supported
+doas*. Still comes with sudo by default and doas is opt-in. I guess
+that it all went downhill when the main dev ceased being in Linux
+after a psychotic break on Twitter.
+
+** It is not such a pain
+
+I bought a GTX 1050 Ti the other day because I bought a 165hz monitor
+but the Intel UHD graphics did not support 165hz at 1080p (or any
+other resolution). Some people might tell me "why did you not bought a
+Radeon", my answer would be "kill yourself".
+
+I've seen many [[https://i.redd.it/so0bie4tegn61.jpg][memes]] about Nvidia on Linux being a pain, in my
+experience it was just "xbps-install nvidia" and rebooting, there we
+go, I can run my three monitors at 165hz without a single problem. And
+DOOM (2016) runs in Ultra at 80fps at 1080p. At this point i'm flexing
+my setup.
+
+In contrast with Debian, void devs give less of a fuck about anything,
+they include other package managers in their *official repos* and they
+include non-free firmware so anyone can use Void Linux, this is not
+Trisquel GNU+Linux, and if you have an exotic piece of software
+probably you can just install it in the opt-in nonfree repos.
+
+Shoutouts to the guy who denied the pull request to add sakisafe to
+void-packages, I have a job and you're still denying pull requests,
+all for free. 
+
+
+* Footnotes
+#+begin_export html
+<div class="outline-2">
+[fn:1] Equalty between genders and shit, not between citizens. So if
+you were a hobo before the Sánchez administration, you'll still be a
+hobo after the ministry of equalty began existing (again)
+
+[fn:2] According to the manpage -y and --refresh are equivalents.
+</div>
+#+end_export html

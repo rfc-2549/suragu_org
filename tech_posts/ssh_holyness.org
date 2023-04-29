@@ -1,0 +1,150 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+options: ^:{}
+#+TITLE: SURAGU - insane stuff you can do with ssh
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+#+EXPORT_FILE_NAME: ssh_holyness.html
+#+AUTHOR: Roberto Cornell
+
+* Insane stuff you can do with ssh
+
+If there's a God, I think he'd probably very dissapointed with us, we
+have created many awful things that can't be name because of
+respect. If I were God I would be dissapointed with my creation and
+probably would end it. But in 2002, a proof that God exists and love
+us appeared, the first version of OpenSSH was released.
+
+OpenSSH is a marvellous software, it is one of the most useful things
+I've seen in my entire life, and when you master it, all of your
+problems will disappear.
+
+** Forwarding ports
+
+This is a known one but that doesn't make it less of a godsend. You
+can forward ports through ssh, like you have in a remote server a
+software running in port 4040. And because of another reasons
+(i.e. firewall, bound only to loopback) you want to have that port in
+your computer.
+
+This is possible thanks to the =-R= and =-L= ssh flags. The syntax for
+both =-R= and =-L= are the same but the concept is different.
+
+- =-L= "brings" a remote port to your device.
+- =-R= "brings" a local port to a remote server.
+
+So, to answer the question in the first paragraph, you can use this
+command to bring the port 4040 running in a remote server to your
+local computer:
+
+#+begin_src bash
+$ ssh -L 4040:127.0.0.1:4040 server.tld
+#+end_src
+
+This will forward the port 4040 running in remote server's
+127.0.0.1:4040. So you can access the remote server from your
+loopbackl address.
+
+By default, ssh binds to the loopback address. If you want, for any
+reason, bind the forwarded port to another address, prefix the local
+port with the address, like this:
+
+#+begin_src bash
+$ ssh -L 0.0.0.0:4040:127.0.0.1:4040 server.tld
+#+end_src
+
+To forward a port, it must go to the another server, creating a
+tunnel, if you created this forwarding rule with a firewall rule or
+another software like socat or netcat, the traffic will be
+unencrypted. SSH is a secure protocol, and all the outgoing and
+incoming traffict that comes from the tunnel will be encrypted.
+
+You'll notice that everytime you want to forward a port a new ssh
+connection will be open, and will create another prompt, you can send
+the thing to background combining the =-F= and =-n= flag.
+
+*** Forwaring ports from an existing connection
+
+A feature of ssh that cured my depression is the fact that if you type
+"~C" (that's literally typing a tilde and a capital c in a ssh window)
+it will prompt the ssh commandline, in which you can type "?" to get
+the usage of the commandline.
+
+** Creating hosts
+
+I have this friend that edits the =/etc/hosts= file to add the
+hostname of his servers to the system's DNS so he can just type =ssh
+<servername>= to ssh to the server. I've told him many times that this
+is stupid and he should edit the =~/.ssh/config= file.
+
+As it name suggets, it is the ssh config file. And it is used to
+configure ssh. There are an insane ammount of options that can be used
+in this config file. But what's important here is that this config
+file can save us many, many keystrokes in the ssh command. Here's an
+example.
+
+#+begin_src conf-space
+  Host guadal
+       HostName 192.168.1.57
+       AddressFamily inet
+       RequestTTY yes
+       User diego
+       SetEnv SHELL=/bin/zsh
+       SetEnv ZDOTDIR=/home/diego/
+       SetEnv ZSHDOTDIR=/home/diego/
+       SetEnv DISPLAY=:0.0
+       ForwardX11 Yes
+
+  Host rguadal
+       HostName 192.168.1.57
+       AddressFamily inet
+       User root
+       SetEnv SHELL=/bin/zsh
+#+end_src
+
+This config file needs no commentary because you can figure what every
+line is doing. After saving a config file i can just type "ssh guadal"
+to login to the server as my user and "ssh rguadal" to login as root.
+
+** Tmux and stuff
+
+There's this software called "byobu" that is basically a tmux that is
+always running in a remote server so everytime you login to your
+server the same session of tmux will be there, and will prompt
+automatically.
+
+Thing is that one day I don't know what I was thinking but I decided
+to install OpenBSD in my server, and Byobu is not available on the
+OpenBSD ports repository and i'm a lazy motherfucker so I won't
+compile it. I fixed this issue configuring regular tmux in a fancy way.
+
+So basically tmux works with sessions, like any other terminal
+multiplexer, and you can attatch to that sessions at any times, as
+many times as you want and with many users you want. It's like this
+impossible concept of 2 things at the same place at the same moment.
+
+I got philosophical, first, you have to login into the server and type
+=tmux -u2= command, or just =tmux=, i use the =-u2= flag because OpenBSD
+is stupid and won't handle unicode alright without those flags.
+
+This will create a tmux session in which you can do whatever you feel
+like doing in a UNIX terminal.
+
+When you're finish doing things in a UNIX terminal, you instead of
+typing "exit" or "C-d" in the terminal to log off, you detatch from
+the tmux session, pressing the modifier (C-b by default) and "d". Then
+you exited the tmux session and can log off from the ssh session.
+
+And when you want to get back to the tmux session you had, you can ssh
+to the server and type =tmux -u2 a=.
+
+This steps can be saved if you type (in my case because i bothered
+configuring ssh, probably you have to type a different command because
+you used a different name) =ssh guadal "tmux -u2"= to create a session
+and =ssh guadal "tmux -u2 a"= to attatch to the other session.
+
+** Conclusion
+
+Mastering ssh will cure your depression.

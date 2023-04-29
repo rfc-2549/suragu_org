@@ -1,0 +1,51 @@
+#+INCLUDE: "inc/header_marijuana.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil -:nil
+#+TITLE: suragu.net - Comissions
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/marijuana.css"/>
+#+EXPORT_FILE_NAME: comissions.html
+
+* Comissions
+
+I have been sponsored to do some reviews, in this page I intend to
+have a special site in the website for those marijuanas who touched my
+heart.
+
+If you're my fucking father, donate to make a review, Monero:
+87nNzDdnACV614EuueWcwiX16hYNr9cVMACzYExHvGRRf2sHDUydjNvFvoMRBRbJntgxanvE9vzGxLTgenydK8PuSMq9aXC
+
+If you send "[[./img/izaskun.jpg][propin]]" be sure to notify me because I check the monero
+wallet very rarely.
+
+For comments, hit me up at melendi@riseup.net
+
+** Gold Extraction 22k (Hash, 22 EUR/gram)
+
+This hash was literally keef, smelled like grass, at first we smoked a
+green (something legendary in this region of the world, we're
+poorfags) with this hash. According to the dude who talked us about
+this, this was "crazy shit", we believed him. Anyways, the joint was
+an incredible one, things is that because we are idiots, we added a
+shitton of hash and a shitton of another expensive grass to the
+bong. My friend hit it first and nigga didn't feel anything, I hit it
+and I was instantly transported to the Marijuana Shadow Realm™. I
+don't remember many things about that hour and a half of my life. Some
+frames I have from those moments were:
+
+1. A friend of mine in ambulance mode to gave me coke (the drink, not
+   the drug)
+2. My other friend doing research and getting an acuarius as donation
+   from the club because of my condition.
+3. Puked three times   
+4. [[./img/narturo.jpg][This romanian motherfucker]] spawning with a kebab to save my
+   godforsaken soul.
+   
+That's all I remember. I recommend it
+
+** Red Sangria (Grass, 12 EUR/Gram)
+   
+To be written, still have to smoke it.
+
+

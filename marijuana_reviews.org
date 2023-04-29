@@ -1,4 +1,4 @@
-#+INCLUDE: "inc/header.html" export html
+#+INCLUDE: "inc/header_marijuana.html" export html
 #+options: toc:nil
 #+OPTIONS: html-postamble:nil
 #+OPTIONS: html-style:nil
@@ -6,8 +6,12 @@
 #+TITLE: Suragu.net - Laughing to the Article 368
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/marijuana.css"/>
 #+EXPORT_FILE_NAME: marijuana_reviews.html
+#+AUTHOR: Ruby da Sousa
 
 * SURAGU’s Marijuana Reviews
+#+begin_export html
+<h2 style="color:red;">(SURAGUのマリファナレビュー!!)</h2>
+#+end_export
 
 Creativity, It’s a known fact that grass increases creativity from
 eight to eleven times. In fact, everyone finds they’re more creative
@@ -19,12 +23,13 @@ fucking plant has changed so damn much. Like everything in
 contemporany society, you have so much choice it’s depressing. In this
 post I will review all the strains I have tried.
 
-But I won’t say “this shit dope” because that would be too boring. And
+I won’t say “this shit dope” because that would be too boring. And
 I’m also not going to explain how each bud helps you with insomnia,
 anxiety, depression and ADHD because despite recent research shows
 it’s not so darn harmful, i’m not an idiot either.
 
-So I’ll review the buds using Pen & Pixel Graphics album covers. I am
+So I’ll review the buds using Pen & Pixel Graphics album covers
+(update: at this point i use just whatever). I am
 not rating the weed on how good the album is. Just in how weird the
 cover is.
 
@@ -42,6 +47,9 @@ un mai”
 
 This post does not want to promote cannabis comsumption. This post is
 entirely made with educational purposes.
+
+If you're under 18 or 21 if you're american, close this tab. Or
+don't. I'm a paragraph, not a cop.
 
 ** Amnesia (grass)
 
@@ -257,3 +265,94 @@ The funny thing about this cover are the protagonists, in this
 picture we can see 21 Savage being the most black dude ever, throwing
 dice, like he's choosing someone's fate, and metro boomin doesn't know
 what he's doing there.
+** Piñata
+
+We might struggle because life's a bitch, when it isn't you can get
+quality /C. Sativa/ samples. This is a good bud that will smell from
+here to Saturn without a simple problem. The following thing happened
+after getting more buds:
+
+1. My friend starts to roll a joint
+2. I give him material to work with, he said that he will add Piñata
+   lately
+3. My man mixed my other material with the thing I gave him before
+4. I ask him what the fuck he's doing
+5. We laugh for 2 minutes straight
+6. He adds Piñata
+7. He adds hash
+8. ???
+9. We had Aqui no hay quien viva playing in the club's television
+
+I don't really know what happened, but then we ate a kebab. This shit
+must have Gucci Mane - The Burrpint the movie 3D:
+
+[[./img/covers/burrpint.jpg]]
+
+Just look at the thing for 3 seconds, what the hell is going it there,
+that was our situation, we did not know who we were, what were we
+doing there, the only thing we had is a joint waiting to be smoked.
+
+** SURAGU's delight (a.k.a. Alzhaimer)
+
+You know when in Terraria you can buy this table from the goblin that
+allows you to combine multiple items into one? Well, you can do the
+same thing with weed, you can mix multiple strains in the same
+joint. Or you can add hash to the joint (a.k.a. mariachi)
+
+In the part of the world in which I reside, putting tobacco in the
+joint is the most common practice, because we're not Rockefeller and
+can't afford greens.
+
+SURAGU's delight formula is the following: Amnesia (grass) + Amnesia
+(Hash). But they're rolled as a [[https://www.youtube.com/watch?v=S8xp1ilM82A][Moroccan joint]] ¹
+
+Some people go to nightclubs and shit to have a good time, I don't. I
+don't need a nightclub, I got a wasteland near home. This joint got me
+seeing Canserbero in the stars, also inventing sentences reading car's
+license plates. A very unusual experience I must say. Then I smoked a
+pipe of this same combination, Deltoya by extremoduro gets the vibe
+pretty well:
+
+[[./img/covers/deltoya.png]]
+
+Not literally, but I think it expresses the feeling pretty well. You
+could say the dude in the cover is having a psychotic break and
+desired to look at the moon while naked. Or you can also think that
+the dude just got done showering, he's naked, but he was so high he
+forgot he made a bong before showering, so before dressing, he hit the
+bong, but he hit the shit too hard he had to get a grip from the
+door and he's exhaling the smoke like a motherfucker.
+
+I don't know what Robe wanted to express with this album cover. But
+it's a pretty good damn one.
+
+
+
+1: Also called "Sevillanos" or "Spanish Joint", but the truth is
+that joints rolled with a cig were invented by moroccans. We do it in
+Spain because we have morocco right here I guess, but anyways, I won't
+argue with the guys who invented hash who invented this method of
+rolling hash joints. 
+
+** Green Crack
+
+You're probably thinking the first thing I thought when I saw this
+strain's name "what the fuck", this is strain is called Green Crack
+for unknown reasons, there is also a substrain called "Super Green
+Crack", which my lungs have not behold yet. So I can only talk about
+Green Crack. This is a Sativa grass, and such sativa.
+
+So we gave a few puffs to the Green Crack joint and we remembered that
+THC is a [[https://pubmed.ncbi.nlm.nih.gov/10863546/][neuroprotective chemical rather than a neurotoxic one]] so we
+looked for "weed helps with alzhaimer" in a search engine, which
+redirected us to a website which listed "Green Crack" as the best
+strain out there for Alzhaimer. Then we forgot why we were in that
+website.
+
+The effects of this were, well, I guess they were good because I do
+not remember. Anyways, this gets Ill Pekeño - Av. Rafaela Ybarra
+
+[[./img/covers/avrafaela.jpg]]
+
+This is a Spanish rapper who sounds like MF DOOM and plagiarized Pen &
+Pixel style. So I think it's pretty epic
