@@ -1,0 +1,71 @@
+#+INCLUDE: "inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil
+#+TITLE: SURAGU
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+#+HTML_HEAD_EXTRA: <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+#+EXPORT_FILE_NAME: guitar.html
+
+* Bitch I don't need to play osu I have a guitar
+
+This section of the website is used to host all my recording with my
+guitar, a Squier Bullet Mustang. Kurt Cobain have this one (or at
+least he did before he shot himself). Thing is that I'm still a
+complete newfag to guitar and musical theory in general so I might as
+well suck. But this is to track my progress rather than to impress
+someone.
+
+TODO list:
+- Learn the chords and shit
+- Learn how to actually do stuff
+- Learn everything that I have to learn
+- Songs:
+  - I no longer fear the razor guarding my heel IV by suicideboys
+  - Rusty Cage by soundgarden
+  - All of pink floyd songs
+  - Anything that I like to be honest      
+
+** Smoke on the water
+Everybody begins with this:
+
+#+begin_export html
+<audio controls>
+<source src="/audio/guitar/smoke_on_the_water.mp3">
+&gt;his browser can't play audio
+</audio>
+#+end_export
+** Jesucristo Garcia
+Good song, good song, I still have to get good at this
+#+begin_export html
+<audio controls>
+<source src="/audio/guitar/jesucristogarcia.mp3">
+&gt;his browser can't play audio
+</audio>
+#+end_export
+
+Update:
+#+begin_export html
+<audio controls>
+<source src="/audio/guitar/jesucristogarcia2.mp3">
+&gt;his browser can't play audio
+</audio>
+#+end_export
+
+** Crazy train
+Crazy, but that how it goes
+#+begin_export html
+<audio controls>
+<source src="/audio/guitar/crazytrain.mp3">
+&gt;his browser can't play audio
+</audio>
+#+end_export
+** Paranoid
+Playing this song is therapeutic
+#+begin_export html
+<audio controls>
+<source src="/audio/guitar/paranoid.mp3">
+&gt;his browser can't play audio
+</audio>
+#+end_export

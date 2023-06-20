@@ -32,3 +32,4 @@ These articles are sorted from oldest to newest.
 9. [[./adblock.html][LAN adblocking]]
 10. [[./ssh_holyness.html][Insane stuff you can do in ssh]]
 11. [[./void.html][If IQ was given like Dopamine, Arch Linux would not exist]]
+12. [[./guitar.html][How to play the Guitar on Void Linux]]

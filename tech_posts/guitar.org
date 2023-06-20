@@ -1,0 +1,104 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+options: ^:nil
+#+TITLE: suragu.net - How to play the guitar in Void Linux
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+
+* How to play the guitar in Void Linux
+
+I started working as a sysadmin somewhat recently, since my work is to
+fight computers, I no longer enjoy fighting computers, so I had to
+find a new hobby. After trying to find a new hobby, I find myself
+being one of the guys from "The Kids Aren't Alright" by The Offspring,
+because now I just play the guitar and smoke a lot of pot.
+
+Normally, you'd connect a guitar to an amplifier so you can play
+it. But some of us, me included, live with unsuffriable family members
+who hate to see you happy and will complain about certain aromas or
+noise. So what you can do is to use your computer as an amplifier. To
+use this you'll need some hardware:
+
+- [[../img/guitar.jpg][An electric guitar]]
+- A sound card (I use the prodipe studio 22+ because a friend of mine
+  sold it for a reasonable price and it's a great soundcard)
+- Headphones that support 6.5 jack entries. I use Pioneer HDJ 1500
+  because my mom's a DJ, with this model you can change between 3.5mm
+  and 6.5mm at will. Pretty epic.
+- Everything else you need to play a guitar
+
+** Linux setup
+
+I use Void Linux for autistic reasons. Playing the guitar just worked
+with the following setup. I could become Syd Barrett easily. But one
+day the JACK shat itself and pulseaudio became autistic. I could not
+find any solution to keep using Pulse Audio, which ended up in me
+discovering the best piece of software known to humankind: pipewire.
+
+Pipewire is just a sound server like pulseaudio, with the difference
+that this one does not sucks ass cock and balls.
+
+So basically, first you stop PulseAudio from starting at login, not so
+hard, just remove pulseaudio.desktop form =/etc/xdg/autostart= And
+then install pipewire and the necessary plugins.
+
+#+begin_src bash
+# xbps-install pipewire pipewire-pulse libjack-pipewire alsa-plugins-jack cadence guitarrix tuxguitar
+#+end_src
+
+pipewire-pulse is a layer of compatibility of pipewire with
+pulseaudio, libjack-pipewire is a embeded jack server onto pipewire or
+something like this. Which is extremely epic in my opinion. Cadence is
+a jack configurator (comes with more software you want to
+use). Guitarrix is a amplifier emulator and TuxGuitar is just a
+software that reads .gpx files so you can learn to play your favorite
+songs.
+
+After installing pipewire, first you create autostarts to autostart
+pipewire and pipewire-pulse (in that order). To do this just do this:
+
+#+begin_src bash
+  ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/pipewire.desktop
+
+#+end_src
+
+Then manually create one startup option for pipewire-pulse in your DE
+configuration, if you're using an autistic window manager like dwm you
+should know how to do this.
+
+After adding those rules, log off and log in, and run =pactl info= it
+should output something like =PulseAudio (on PipeWire 0.3.68)= This
+basically means that your PulseAudio server is just PipeWire, you're
+using pipewire but you can also use pipewire to work as pulseaudio,
+and jack.
+
+** Making the thing work
+
+Alright, connect your 6.5 jack headphones to the sound card, plug the
+soundcard to the computer, change the audio output (through
+=pavucontrol= or anything) to the soundcard, play any song and you'll
+know what a FLAC sounds like. Then you connect the guitar, play a few
+chords, and it sounds through the sound card ("the prodipe" from now
+on). So you're almost ready. Now you have to use pipewire's jack
+server to configure the audio flow. First open Guitarix and Catia with the
+following command:
+
+#+begin_src bash
+  $ pw-jack guitarix &
+  $ pw-jack catia &
+#+end_src
+
+This will launch Guitarix (guitar amplifier) and Catia, a software to
+plug and unplug audios through jack.
+
+So you have to connect your guitar to Guitarix and then from
+Guitarix to the desired output, like this:
+
+[[../img/catia_example.png]]
+
+After that, just go to Guitarix and add enough effects so you sound
+like Alice in Chains. And have fun.
+
+

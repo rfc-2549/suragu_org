@@ -29,6 +29,8 @@ to the following address:
 - Bitcoin: bc1q8k6f3ja8na82wl6ehw73uhy67d45pkhs63yvy5    
 
 * Mirrors
+They might or might not be up, in the case that one of these mirrors
+are down, send me an email and I'll fix them.
 #+begin_export html
 <p>
 <a href="http://sukamuzgxigntu7issqf3y5bfsskwg5zzrzbuqjaxxmhkfoxbgiy77qd.onion">[Tor]​</a> <a href="http://46egvt2hpvkqwm5xw4wyyozp6hkwvnmbcys7bi6rh4o4wktllpea.b32.i2p/">[I2P]​</a>

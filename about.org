@@ -17,6 +17,7 @@ much about others and start caring about yourself.
 
 [[./keys.txt][pgp & ssh keys]]
 
+
 ** Projects
 Some projects I have worked on are [[https://git.suragu.net/sosa/sakisafe.git][sakisafe]], a simple file sharing
 program and it's terminal interface. The source code of my blog is

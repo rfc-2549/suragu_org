@@ -47,7 +47,7 @@ I don't know why it took them so long, but at least they did.
 
 ** What's so good about Void Linux in contrast to $DISTRO?
 #+begin_export html
-<div style="border-style: dashed; color: yellow;">
+<div style="border-style: dashed; color: yellow; max-width: 75%;">
 <p>
 <i>Disclaimer: If you use gentoo, you might not find this section
 useful as you should be attended by professionals of the mental health
@@ -188,14 +188,15 @@ Shoutouts to the guy who denied the pull request to add sakisafe to
 void-packages, I have a job and you're still denying pull requests,
 all for free. 
 
-
-* Footnotes
 #+begin_export html
 <div class="outline-2">
+#+end_export
 [fn:1] Equalty between genders and shit, not between citizens. So if
 you were a hobo before the Sánchez administration, you'll still be a
 hobo after the ministry of equalty began existing (again)
 
 [fn:2] According to the manpage -y and --refresh are equivalents.
+#+begin_export html
 </div>
-#+end_export html
+#+end_export
+
