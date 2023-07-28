@@ -1,0 +1,37 @@
+#+INCLUDE: "inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil
+#+TITLE: SURAGU - SOUSA
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+#+HTML_HEAD_EXTRA: <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+#+EXPORT_FILE_NAME: sousa.html
+
+* SURAGU Official University of Systems Administration (SOUSA)
+
+So you came here from 4chan, and you're the definitive broke ass nigga?
+Well no problem because with this shit course you'll be the Lion
+Sysadmin. If you pay for it, clearly.
+
+In this course you will learn to:
+
+- Set up your own Linux server using an old computer (or a VPS)
+  - How to install Linux
+  - How to configure nginx, prosody, NextCloud and other services
+  - Using nginx to serve other websites (Reverse proxy)
+- Set up your own VPN, so you can have all your devices connected
+  - Set up services inside that VPN with a custom Top Level Domain
+    (LTD)
+  - Creating a Certificate Authority, so you can have HTTPS on your
+    VPN
+- Set up means of communication (XMPP, Matrix, IRC)
+- How to interpret error logs, so you can fix your stuff
+- How to fix your server when it blows up
+- How to see your server's stadistics
+- How to make scripts in a real programming language (Perl, maybe Python)  
+- How to learn things on your own, so you don't have to email me every
+  time you have a question.
+
+Knowing all of these GUARANTEES a job in an IT consultant!
+
