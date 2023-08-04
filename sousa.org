@@ -29,7 +29,8 @@ In this course you will learn to:
 - How to interpret error logs, so you can fix your stuff
 - How to fix your server when it blows up
 - How to see your server's stadistics
-- How to make scripts in a real programming language (Perl, maybe Python)  
+- How to make scripts in a real programming language (Perl, maybe
+  Python and Bash)  
 - How to learn things on your own, so you don't have to email me every
   time you have a question.
 
