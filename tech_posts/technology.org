@@ -1,0 +1,146 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+options: ^:nil
+#+TITLE: suragu.net - Technology was a mistake
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+
+* Technology was a mistake
+
+One day I will be with my firstborn son in the middle of Mataelpino,
+and he will ask what I was doing when AIs took the world, how humanity
+was so stupid to let an extremely autistic man who has wanted to name
+a company "X" since he has memory, but they didn't let him (God knows
+why) and no investor would invest in "x.com", for very obvious
+reasons. But this does not make sense into the head of an Asperger
+with God complex.
+
+When I wake up in the morning I get autistic, this morning I browsed
+Hacker News because I saw it shilled in 4chan, thing is that today
+they were shilling a post about marijuana and how marijuana is
+incredibly addictive and people struggle with Marijuana Addiction.
+
+Look my tolerance is so high they call me the chronic man, I do have a
+marijuana addiction, I do not hide, difference is that I'm not a
+JavaScript Developer from Palo Alto, California. Which gives me more
+sanity. Thing is that in the comments, there was this gem:
+
+#+begin_quote
+
+When I was in my early 20s I would probably say I had a dependence on
+cannabis. Key for me in transitioning away from that was lower THC %
+products. It was as if I wanted to enjoy a single beer after work
+but the only thing available was everclear. Most vape pens are billed
+as 85%+ THC. Now, I still enjoy cannabis, but I have a single puff of
+a vape pen that is around 3% THC (the rest is usually CBD) before
+bed. Or I take an edible that is 1.5 mg THC (very low, edibles are
+usually sold at 5-10 mg doses). It's a much different relationship. I
+don't feel like my mind is racing out of control, I don't build up a
+massive tolerance. I sleep fine without it. It's startling to think
+that a single puff of a 90% pen is literally 30x as much THC.
+
+However, these products are disappointingly few and far between. When
+I walk into a CA dispensary, I actually have to hunt around for them,
+if they're even available. When I ask, staff members wonder if I'm
+buying it for my grandmother! It would be great to see the industry
+refocus on products that are designed to be consumed in moderation.
+#+end_quote
+
+Bitch, technology won't tell me how many blunts I can smoke today. If
+you think everything has a limit, that's what you are. Limited. But
+this post it's not just calling people who vape faggots. I have a weed
+vaper too, difference is that I don't smoke [[https://www.npr.org/sections/health-shots/2019/12/20/790154919/cdc-confirms-a-thc-contaminant-vitamin-e-acetate-the-culprit-in-most-vaping-deat][vitamin E acetate]].
+
+Anyway, guy seems to be struggling to get his weed in California,
+well, I'm glad I don't pay taxes.
+
+During the pandemic I read the Unabomber Manifesto, something that
+most people here claimed to have done but have never done because this
+is the internet and everyone wants to project some version of
+themselves they will never be because they're busy setting Lain as
+Twitter profile picture while high in Clonazepam because they want the
+internet to feel sorry about some guy.
+
+I remember that Ted said that modern leftists are so stupid basically
+because of their feelings of inferiority. They think they're inferior
+(we might be) and that's why they do harm to themselves (throwing
+themselves to cop cars, burning stuff and being leftists). By the time
+that the Manifesto was written, social media was not a thing (which
+only confirms that Ted was right). If social media works for something
+is for giving users feelings of inferiority and
+self-deprecation. Because the best thing the internet has showed us
+was that hating stuff is pretty cool, and everybody should do that to
+be cool. You're less than your favorite rapper, you're less than any
+celebrity or any influencer.
+
+The other day I was also reading the "chemicals of sillicon valley",
+this means, apparently, in Palo Alto, California, people hired by the
+consultant of the consultant of the consultant of Google are so
+committed with their job that they go to work high on [[https://www.wsj.com/articles/silicon-valley-microdosing-ketamine-lsd-magic-mushrooms-d381e214][fucking acid]] and
+ketamine. I mean if I was a javascript programmer I'd also like to
+dissociate to the point I don't know what I am. I wonder what kind of
+people actually do this. Like I'm having a bad time imagining [[https://i.insider.com/5f7222110ab50d00184acd03?width=700][these
+guys]] snorting the bump of their lifes. I simply can't. But well,
+there are 3 types of programmers: The sober one, the alcoholic one and
+the one that can't spell /"sober"/.
+
+Elon Musk is a convicted Ketamine addict and taleks about how
+depression is a brain chemical issue, well, having to wake up at 8 AM,
+going to work, not seeing colors, being all day in an office and then
+get home and have no one waiting for you doesn't sound like a brain
+chemical issue.
+
+Speaking of, have you seen the ADHD epidemic we're having lately? We
+have crushed everyone's attention span just to give us
+adversitements. I mean, if dudes in Sillicon Valley are using
+ketamine, I'm pretty fucking sure we're legalizing cocaine sooner than
+later just to give it to kids with Internet Indouced ADHD, so they can
+be part of the machine as well.
+
+My question is why we had to give everyone ADHD, so some chinks can
+have more money? So Mr. Musk can have more money? This is pretty epic,
+we have fucked everyone's life and filled the streets with ads just so
+rich people can get richer. And I pay more taxes every month. We have
+built a surveillance dystopia to give ads to people. We have built a
+dystopia for "counterterrorism", we have removed [[https://www.archdaily.com/993197/is-the-world-less-colorful-highlighting-the-color-evolution-of-objects-and-spaces][fucking colors]] so we
+comply with this bullshit called Bauhaus.
+
+Maybe computers were not a mistake, maybe, maybe the mistake itself
+was the internet. Maybe not, because ARPANET was created with
+millitary purposes. Maybe the mistake was the WWW, maybe it was not
+because the early days of the WWW was geocities and shit. Imagine you
+were using a computer in the 90s smoking marijuana, shit would have
+been epic because computers was something new.
+
+Thing is that to use a computer in the early 90s, you had to know what
+you were doing, there was no Windows 11 and shit software that takes
+you by the hand and does everything for you, instead of letting the
+user specify how he wants shit to be done. When you're using a real
+operating system you cannot trust your computer for the most trivial
+thing. Because computers are not to be trusted, simply because they do
+literally what you told it to do. It's called "processor
+instructions".
+
+The biggest mistake of humankind was to give computers to everyone who
+wanted it despite the final user don't know what he's doing, so he can
+only trust the computer and the software he's using, when you trust
+someone you're giving the chance for them to stab a knife in your
+back. We've been stabbed in the back and psyoped into thinking that
+everything should be digitalized. If you trust the software is because
+you don't care about what it is doing, so corporate developers add
+shit programming practices with datamining functions, so they know at
+what time you go take a shit to give you a very specific ad. All the
+spyware in the world is not for 1984 purposes. It's simply to give us
+ads.
+
+The atomic bomb? That's bullshit, the worst thing humans have done is to
+put JavaScript into everywhere, let AIs generate websites only for SEO
+purposes and the websites are useless (again, this AI generated
+websites have ads on them and are unbrowseable).
+
+I've wasted all my youth learning about computers and stuff. These
+days I wish I could exchange half of what I know about computers and
+shit for musical knowledge. But at least I got a job.
+
