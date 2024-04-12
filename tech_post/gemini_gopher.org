@@ -1,0 +1,114 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil
+#+options: ^:nil
+#+TITLE: suragu.net - Gemini & Gopher are garbage and you're coping
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+
+* Gemini is garbage and you are coping
+
+In the infinite search for wanting to be cool online, "humans" created
+the Gemini protocol as an alternative to the "bloatted" HTTP
+protocol. And they created an alternative protocol to deliver text
+over wires. The gemini protocol was created not to fix the problems of
+HTTP but to "create a whole new web".
+
+This is retarded. The problem with the internet is not the
+protocol. It's the fact that any idiot can come here and say
+whatever. The problem is not how the HTTP delivers text. The problem
+is how users use that text.
+
+Some people might say "but in gemini/gopher" there's no JavaScript!!
+yeah no shit man. Guess what. Gemini/Gopher just transfer text so if
+someone wants to implement JavaScript in a Gemini client. They will do
+it because there's nothing holding them against that. What now?
+
+I'm going to spit a fact that will make Drew DeVault put his hands on
+his head: The internet does not move on goodness. It moves on MONEY,
+All we ever cared about was on making money! And Gemini, as according
+by this same dude [[https://drewdevault.com/2020/11/01/What-is-Gemini-anyway.html][is garbage]][fn:1]. Can you name a Gemini browser? I
+can. Kristall. Like the hoe from The Boondocks. The browser itself is
+unusable garbage. I'd try the browser for this blog post but the only
+gemini site alive (Drew's site) is down so I cannot try it. If anyone
+knows another gemini site please email me so I can update this post:
+diego (at) suragu (dot) net.
+
+Does gemini actually improves anything? No. it is a downgrade. The way
+that a downgrade from HTTP to Gemini differs from an industrial
+society to a agriculture society is that industrial society has done a
+lot of harm while HTTP is just a consequence of it.
+
+According to Drew views of "The Future". You'd have to use a browser
+which cannot even connect to gemini sites, have no CSS and no
+interaction whatsoever (at this point why don't we download blogposts
+through FTP or rsync?). And it only gets worse because according to
+the Wikipedia, Gemini does not want to replace Gopher or HTTP. 
+
+Then why the fuck does this shit exist? As an alternative to HTTP?
+Yeah, I'm going to offer a gemini mirror of my site. I am going to
+manually convert every fucking file in this site so your ass can see
+it in Gemini. I'm not going to double my work so you can read this
+shit. I already did that 3 years ago and it was a pain in the
+ass. Never again. Other sites literally will publish gemini exclusive
+content. Needless to say their grandma will read them. Not me.
+
+Now, talking technically. There's a problem with Gemini. What if the
+guy who develops this protocol gets hit by a bus? What if this dude
+decides that computers were a mistake and moves to the mountain? What
+would happen with gemini?. Again, this protocol has not been submited
+to the IETF. This makes gemini subject of change. This shit ain't not
+even supported by main things (like Firefox, chrome or more niche
+software like wget) because there's not even a draft standard. No one
+knows how to implement it. And no one is going to bother on writing a
+formal standards for a shit protocol created by a guy who misses
+gopher. There's no standard port. There's no standard media I mean, I
+can understand why someone would NOT want to talk to the IANA or the
+IETF. I cannot imagine how the Internet bureaucracy actually
+works. But like my English teacher used to say: "you've made your bed,
+now lie in it"
+
+Oh but hold on! You can proxy your text from the "geminispace" to
+HTTP. Holy shit yes! I want my site to look like a generic Hugo site
+because I want it to be in the GEMINISPACE and only proxy it to the
+actual World Wide Web though another software so I can be /elite/. This
+is stupid. Why would someone do this unironically?
+
+As theres also no CSS (and no JavaScript, but I simpathize with this
+actually) all websites look the same. So basically every website looks
+like it was designed (not even this because there's no design) by the
+same person. And there's nothing differencing your site from the site
+of a dude in Vietnam. If this looks good to you because "no
+bloat". Congratulations man. You've left your jokes in the 2019-2021
+arc of \/g\/.
+
+I don't know about Drew or other Gemini simpathizers. But I think I
+have things worth saying and worth reading. And as I think this. I
+want people to actually read my stuff and think about what they have
+read. This is impossible if I'm using the Gemini protocol, not because
+it is a bad protocol (in Gemtext a paragraph is a line so it is indeed
+garbage) but because no one uses it. Or have you ever prompted up
+a Gemini browser and did your everyday tasks on it? Have you ever
+accomplished something in Gemini? Have you ever read something
+interesting rather than a rant in Gemini? Of course you haven't
+because there's nothing worth reading in there. Just people ranting
+about JavaScript and how bloated the net has become. What they don't
+know is that that style of website has existed since the 90s and.
+
+The geminispace (and the internet itself) is like a big liminal
+space. There's nothing to do in there. Just go to the next room and to
+the next room. In the hope you find your way out of this maze.
+
+I'd talk about the Gopher protocol but it is as dead as
+dead. Literally no one using it. But unlike Gemini. Gopher is [[https://datatracker.ietf.org/doc/html/rfc1436][formally
+defined.]] This make it more attractive to organizations who cannot
+trust a dude in his room. :^)
+
+They sold me the Gemini protocol as the future some years ago. Seems
+like it did not work because you do not see NPCs of life takling about
+the Gemini protocol like they did about NFTs or AIs. you know why?
+Because again, the internet does not move on goodness, but on money.
+
+[fn:1] This dude truly expects people to use =openssl s_client= to read
+his site?

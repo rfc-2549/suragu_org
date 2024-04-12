@@ -8,6 +8,14 @@
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
 
 * Technology was a mistake
+#+begin_quote 
+"I actually started off majoring in computer science, but I knew right
+away I wasn't going to stay with it. It was because I had this one
+professor who was the loneliest, saddest man I've ever known. He was a
+programmer, and I knew that I didn't want to do whatever he did."
+
+--- Jermaine Lamarr Cole
+#+end_quote
 
 One day I will be with my firstborn son in the middle of Mataelpino,
 and he will ask what I was doing when AIs took the world, how humanity

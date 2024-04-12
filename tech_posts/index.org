@@ -8,18 +8,14 @@
 #+EXPORT_FILE_NAME: index.html
 #+author: Roberto Cornell
 
-* suragu.net tech posts
+* suragu.net tecnología
 
-I have a [[../blog/][blog]], but I to keep it to very weird things that come to my
-mind that don't require text formatting, images, or anything that is
-not plain text.
+La intención de esta sección del sitio web es para hacer un espacio
+relacionado con la tecnología. Odio la tecnología así que la he
+contenido en su propio directorio.
 
-The intention of this section of my website is to make a space for all
-the weird things that are related with tech. Which mostly always
-require formatting like syntax highlighting, images, or monospaced
-text. So I decided to create this section for the tech related posts.
-
-These articles are sorted from oldest to newest.
+Están ordenados de mas viejo a mas nuevo porque no me he molestado en
+automatizar esta parte del sitio.
 
 1. [[./org_mode_as_ssg.html][org-mode as static site generator]]
 2. [[./freebsd_as_desktop.html][raoul's experiences with FreeBSD as desktop.]]
@@ -34,5 +30,7 @@ These articles are sorted from oldest to newest.
 11. [[./void.html][If IQ was given like Dopamine, Arch Linux would not exist]]
 12. [[./guitar.html][How to play the Guitar on Void Linux]]
 13. [[./technology.html][Technology was a mistake]]
-
-    
+14. [[./proxmox.html][No one man should have all that power]]
+15. [[./gemini.html][Gemini is garbage and you're coping]]
+16. [[./ipv6.html][Ghetto IPv6 from The Hood]]
+17. [[./xiaomi.html][Mi cruzada contra China]]

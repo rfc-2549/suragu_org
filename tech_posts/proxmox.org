@@ -1,0 +1,147 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil
+#+TITLE: suragu.net - No one man should have all that power
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+#+EXPORT_FILE_NAME: proxmox.html
+#+author: Roberto Cornell
+
+* No one man should have all that power
+
+One day a based guy flexed me his epic server setup, which has a lot
+of services, each of them running in different virtual machines using
+Proxmox. I thought it was pretty epic, so I decided to copy it.
+
+Proxmox is a virtual machine manager based on Debian, according to
+wikipedia "Proxmox Virtual Environment (Proxmox VE or PVE) is a
+hyper-converged infrastructure open-source software." But none of
+those words are in the Bible. So I will stick to my definition.
+
+My T400 is on his deathbed these days, it is powering off
+automatically after some time running (this could be a battery/charge
+issue, I will change the charger when I finish writing this) so I
+got 2 VPS, one on a good VPS provider and the other in Delegao Ltd.
+
+When this guy asked me what OS I wanted on the server I said Proxmox
+for the laughs, but having a virtual machine virtualizing other
+virtual machines is something that for funny how it sounds, works
+pretty well.
+
+The host server is a normal QEMU virtual machine with 8GB of ram, 80GB
+of storage and a 2.6GHz 4 core processor. May sound shitty but as the
+host is a friend of mine I can call this guy in any moment and say
+[[https://memepedia.ru/wp-content/uploads/2020/10/igor-bogdanov-s-telefonom-1.jpg][pump it]]
+
+Something pretty cool about Proxmox is you can create VMs as well as
+LXC containers (which use less resources than VMs as they're *VERY*
+glorified chroots), so my recommendation would be to use LXC if you're
+going to set up a Linux machine and a VM if you're going to set up a BSD
+or, I don't know, plan 9.
+
+The purpose of this post is to flex my Proxmox setup not gonna lie.
+
+* Load balancer
+
+As I said, the T400 is fucking dying. And I wanted to have suragu.net
+up most of the time. So I set up a mirror of my website in 3 servers
+(https://do.suragu.net http://re.suragu.net and http://mi.suragu.net
+(this one is the dreaded T400)). And suragu.net points to
+re.suragu.net, port 80 and 433 of this IP address is NAT'ed to the
+haproxy virtual machine.
+
+There are some difference between one server and anothers (for now the
+only difference is the video played in the [[https://suragu.net/dajklsahfd][404 page]].
+
+* Virtual Private Network
+
+I have a Virtual Private Network to connect all these VMs and physical
+machines such as my desktop, laptop and phone so they can access each
+other. I use Wireguard as tunnel software because I'm not mentally
+ill... I think.
+
+The VPN is running in the "router" machine, which runs the latest
+OpenBSD version, 7.2. The only purpose of this machine is to run
+wireguard and serve as router. Nothing else.
+
+* DNS Server
+
+I tried to set up pi-hole, but it was made by some idiot which wrote the
+worst Makefile known to mankind so I could not install it, so I
+decided to go the old way. Using unbound. [[https://suragu.net/tech_posts/adblock.html][There's a anime website
+explaining how to do it]]. After solving issues because of the VPN
+routing stuff, (basically allowing 10.0.0.0/16 in unbound config) it
+basically worked, so I could add the following line to the wireguard
+config in my devices:
+
+#+begin_src bash
+DNS = 10.0.0.15 # This is MY IP address it might differ from yours
+#+end_src
+
+So everytime I bring the VPN up in my devices I will have an adblocker
+in a DNS server I trust.
+
+As I have my own DNS server, I can create my own domains which
+resolves to the IP address inside the VPN.
+
+* ntopng
+
+ntopng is computer software for monitoring traffic on a computer
+network. It also contains a web interface in which you can see the
+traffic status, what kind of traffic it is (http, tcp, ssh), where it
+comes from, and where it is going. I have it running in the main node
+(the one that runs proxmox) because it is the only machine in which
+all the traffic goes through.
+
+* Mail server
+Yeah I also have a Debian container running an email server, as the
+pain of setting up an email server is unbeareable, I have used
+[[https://github.com/lukesmith/emailwiz][emailwiz]], a script by the old legend known as Luke Smith, which also
+installs spamassassin which is pretty great. And it makes it work with
+aliases and multiple domain if you're bold enough to read the
+documentation.
+
+I should create a control panel to manage aliases, users and stuff,
+written in perl, obviously.
+
+* Kanboard
+[[https://kanboard.org][Kanboard]] is a kanban board which basically keeps track of the things you
+have to do in general. Good for keeping track of your tasks or of your
+life ni general.
+
+* Dokuwiki
+I was too lazy to install MediaWiki so I just installed DokuWiki
+because it's easier to install. configure and use in general. And does
+the exact same shit plus dokuwiki has that 2005 aesthetic which can
+only be replicated by Monobook.
+
+* Cheatsheet for configuration
+
+It's pretty epic to have all the VMs you want, but as my surname is
+not Rockefeller or Rothschild, I cannot have more than 1 IP
+address. So I have to do some kind of port forwarding to each IP
+address, this is done with IP tables NAT rules. It is not that
+hard. this is the bsae command I found on an very SEO optimized Indian
+website:
+#+begin_src bash
+  iptables -t nat -A PREROUTING -i <INTERFACE> -p <tcp|udp> --dport <PORT> -j DNAT --to <DESTINATION_ADDRESS>:<PORT>
+#+end_src
+And that will just work, the whole networking thing on Linux is a
+fucking joke so each time you reboot your server it will delete the
+rules so run =iptables-save= once in a while and check the
+=iptables-restore= manpage.
+
+* Ansible
+
+Ansible is a thing that people use to "manage the servers",
+"configuration management", and "application deployment functionality"
+but that's just a fancy way to say "run the same commands in multiple
+servers automatically". Because that's truly the only thing it works
+for. You can write playbooks (in YAML format because we never learn)
+in which you write the commands you want to the execute, the debug
+commands and what to do in case of exceptions. I've written a few
+playbooks and they're available on my [[https://git.suragu.net/svragv/ansible-playbooks][git]].
+
+
+

@@ -1,0 +1,24 @@
+#+INCLUDE: "inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil
+#+TITLE: SURAGU INDUSTRIES
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+#+HTML_HEAD_EXTRA: <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+#+EXPORT_FILE_NAME: index.html
+
+* vpn.suragu.net
+Bienvenido a la VPN de suragu.net, la darknet mas épica del multiverso
+
+* Servicios al público
+- [[https://searx.suragu.net][Searx]]
+  
+* Servicios administrativos
+- [[http://bugs.suragu.net][Bugzilla]] - Tracker de bugs y tickets
+- [[https://re.suragu.net:8006][PROXMOX VE]] (server) - Gestor de máquinas virtuales
+- [[http://vpn.suragu.net][vpn.suragu.net]] Este sitio
+- [[http://ntopng.suragu.net][ntopng]] monitor de red
+
+* Message of the day
+Niggas get laid I get paid

@@ -1,0 +1,126 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil 
+#+TITLE: suragu.net - Cruzada contra los chinos
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+#+EXPORT_FILE_NAME: xiaomi.html
+
+* Mi cruzada contra china
+
+#+begin_export html
+<video width="320" height="240" controls>
+  <source src="/vid/vivaldi_winter.webm" type="video/webm">
+
+Your browser does not support the video tag.
+</video>
+#+end_export
+
+Nos ha jodido, si nos dan una mierda es normal que no la queramos,
+MIUI es una mierda que es literalmente bloatware, spyware, shitware,
+shovelware y absolutamente todo lo malo que pueda tener un sistema
+operativo, es incluso peor que windows, con windows al menos solo
+tienes la mierda de Microsoft, pero es que con MIUI tienes
+genuinamente la mierda de Google y de Xiaomi (y en algunos paises la
+mierda de tu operadora también).
+
+Los teléfonos móviles de hoy son literalmente el sueño de
+Goebbels. Esto vale para espíar, espíar y espíar. Y para consumir
+contenido. Porque es jodidamente dificil ser productivo en un móvil.
+
+Los móviles de Apple realmente están bastante bien pero Apple es una
+jodienda como compañía que no puede hacer nada bien. Las compañías de
+Android son subnormales que lo hacen incluso peor.
+
+En los moviles con Android al menos se pueden hacer cosas como
+instalar roms personalizadas, desbloquear la mierda y flashear tu
+propia mierda. Pero esto es mas o menos polémico dependiendo del
+fabricante.
+
+Los moviles Xiaomi son una jodienda porque estás literalmente bajo el
+yugo de Pekín. Veréis, para hacer lo que tu quieras con tu movil
+primero tienes que desbloquear el bootloader, para que puedas flashear
+el móvil y se la sude lo que haya en las particiones. Xiaomi te deja
+hacer esto después de pasar por una tortura conocida como burocracia.
+
+Esto es absurdo. Por que cojones me tenéis que hacer esperar para
+desbloquear el bootloader. ¿Para que me arrepienta y no lo haga?
+Subnormal, solo me estás dando mas razones para salir de tu jodienda
+de sistema operativo.
+
+Bien, en algunos móviles con procesador MediaTek (que son una mierda
+por cierto, pero tienen algo que los snapdragon no tienen, mas sobre
+esto luego) son vulnerables a un exploit con nombre otaku:
+kamakiri. Esto es un bootrom exploit para algunos SoCs MediaTek. Que
+realmente te da control sobre todo el dispositivo. Como si fueses un
+Reparador Autorizado™.
+
+Mira, no voy a hablar de lo cuestionable que es que haya que recurrir
+a un exploit para arreglar tu dispositivo o querer modificarlo. Pero
+es jodidisimamente horrible.
+
+** Desbloquear el bootloader sudando polla
+
+A ver, esto se ha hecho en un Redmi Note 9, pero tendría que funcionar
+en cualquier cosa que corra un MediaTek compatible.
+
+Bien, para que el kamakiri funcione tienes que hacer una cosa
+rarísima: parchear el Kernel de linux (funciona en Windows pero estás
+tu que voy a instalar Windows para explicar como va esto en
+Windows). Como compilar el kernel de linux da muchísima pereza, hay
+kernels prebuilt que podría bootear en Debian, el problema es que como
+tengo zfs no puedo usar kerneles de por ahí. Por que los de Linux son
+subnormales y no meten el código de zfs en el kernel. Pero bueno, para
+la fortuna de to cristo, el proyecto de MTKClient (programa que se
+aprovecha del exploit este) tiene una ISO de Xubuntu con el kernel
+parcheado en el que puedes ejecutar esto y todo lo que tu quieras.
+
+La página del proyecto es [[https://github.com/bkerler/mtkclient]] y
+puedes descargar la ISO desde ahí.
+
+Lo lo que hice porque soy un vago de mierda fue poner la ISO en una
+máquina virtual y habilitar el forwarder de USB de virt-manager para
+que la VM con esa ISO pudiese ejecutar el exploit en el móvil.
+
+Vale, para ejecutar el exploit tienes que abrir el mtkclientgui (está
+en el escritorio). Apagar el movil, enchufarlo, y pulsar el botón de
+power + volumen abajo + volumen arriba. Esto hará que el móvil entre
+en modo EDL (o sea, el fastboot del fastboot). En el móvil no se verá
+nada. Es normal. Pero el mtkclient va a reconocer el movil y va a
+ejecutar el exploit. Felicidades! Ya eres un Reparador
+Autorizado™. Ahora puedes hacer realmente lo que te salga de la polla.
+
+Dale click a la pestaña de "flash tools". Dale click a unlock
+bootloader. Ala, ya está, eres libre.
+
+** Instalar una Custom ROM
+
+Ahora reinicia en el fastboot. Y flashea el firmware que LineageOS o
+la ROM que uses te diga que tengas de base. Esto se puede hacer en
+fastboot buscando el firmware original por internet. En el caso del
+Redmi Note 9 tiene que tener Android 11. Es MUY importante que se
+respete esto porque sino directamente el recovery no te va a funcionar
+o la custom ROM hará cosas raras como apagarse solo. Se puede
+descargar [[https://xiaomifirmwareupdater.com/miui/merlin/stable/V12.5.4.0.RJOMIXM/][aquí]].
+
+se puede flashear esto en linux ejecutando ./flash_all.sh del tar
+descargado. Hay uno que tiene lock pero ese no lo ejecutes porque se
+bloqueará el bootloader y te quedarás con cara de gilipollas porque
+tendrás que volver a bootear en la ISO esa rara para desbloquearlo
+otra vez.
+
+Cuando eso acabe, (tampoco debería tardar demasiado), reinicia en el
+sistema operativo que acabas de flashear y prueba que funcione.
+
+Luego reinicia en el fastboot otra vez y flashea el recovery que
+quieras con fastboot flash recovery recovery.img. Puede ser el de
+lineageos o el de e, cwm y twrp están muertos. No lo uséis.
+
+Sidelodeas el zip de la ROM que quieras. Esperas a que acabe y ya
+está. Reinicias, pruebas que funcione y ya está 
+
+
+** Conclusión
+
+me cago en los chinos, en xiaomi, mediatek y google.

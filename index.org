@@ -3,36 +3,50 @@
 #+OPTIONS: html-postamble:nil
 #+OPTIONS: html-style:nil
 #+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil
+#+INCLUDE: /home/diego/.org-macros/org/org-macros.setup
 #+TITLE: SURAGU
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 #+HTML_HEAD_EXTRA: <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+#+HTML_HEAD_EXTRA: <meta name="description" content="SURAGU.NET --- Existencialismo, tecnología y anime" />
+#+HTML_HEAD_EXTRA: <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+#+HTML_HEAD_EXTRA: <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
 #+EXPORT_FILE_NAME: index.html
 
-* suragu.net
-Welcome to SURAGU, a website in which I talk about anything that comes
-to my mind, reviews, technology, and filler content such as the media
-I have consumed.
+* SURAGU
+Bienvenido a SURAGU, un sitio web donde hablo de cualquier cosa que se
+me ocurra, reseñas, tecnología y contenido de relleno como la
+multimedia que he consumido. Por razones históricas parte del
+contenido está en inglés.
 
-Everything that I have created is under the WTFPL or the public domain.
+Todo lo que he creado está bajo la WTFPL o cualquier licencia
+equivalente al dominio público
 
-* Contact
-If you want to contact me because of any reason, I have an email:
-chief_keef at riseup dot net, or you can join =irc.suragu.net= and
-join =#montepinar=.
+Este sitio literalmente no usa cookies en primer lugar. Así que
+incumplimos la GDPR orgullosoamente.
 
-* Donate
+Dejad una firma en el [[https://suragu.net/guestbook/guestbook.cgi][libro de visitas]].
 
-If you want to help me to defraud the treasury, send cryptocurrencies
-to the following address:
+[[https://lain.dance][lain.dance]] inauguración 2024. Sitio web en el que podéis chequear como
+se menea.
 
+* Contacto
+Para elogios, insultos, trabajos y amenazas de muerte, podeis mandarme
+un mail a diego (arroba) suragu [punto] net. Suele funcionar. También
+puedes usar XMPP. que es diego (arroba) scaringtheho (punto) es
+
+* Donar
+
+Si quieres ayudarme a defraudar a Hacienda, envía criptomonedas a las
+siguientes direcciones:
 - Monero: 87nNzDdnACV614EuueWcwiX16hYNr9cVMACzYExHvGRRf2sHDUydjNvFvoMRBRbJntgxanvE9vzGxLTgenydK8PuSMq9aXC
 - Bitcoin: bc1q8k6f3ja8na82wl6ehw73uhy67d45pkhs63yvy5    
 
 * Mirrors
-They might or might not be up, in the case that one of these mirrors
-are down, send me an email and I'll fix them.
+Puede ser que ni siquiera funcionen, en tal caso mandarme un correo y
+lo arreglaré.
 #+begin_export html
 <p>
-<a href="http://sukamuzgxigntu7issqf3y5bfsskwg5zzrzbuqjaxxmhkfoxbgiy77qd.onion">[Tor]​</a> <a href="http://46egvt2hpvkqwm5xw4wyyozp6hkwvnmbcys7bi6rh4o4wktllpea.b32.i2p/">[I2P]​</a>
+	<a href="http://sukamuzgxigntu7issqf3y5bfsskwg5zzrzbuqjaxxmhkfoxbgiy77qd.onion">[Tor]​</a> <a href="http://46egvt2hpvkqwm5xw4wyyozp6hkwvnmbcys7bi6rh4o4wktllpea.b32.i2p/">[I2P]​</a>
 </p>
 #+end_export
+Sitio generado el {{{time(%Y-%m-%d a las %H:%M)}}}

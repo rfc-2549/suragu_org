@@ -1,0 +1,105 @@
+#+INCLUDE: "../inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil
+#+TITLE: suragu.net - Ghetto IPv6 from The Hood
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+#+EXPORT_FILE_NAME: ipv6.html
+#+author: Roberto Cornell
+
+* Ghetto IPv6 from The Hood
+
+So we ran out of IPv4 addresses because despite all the news warning
+about low natality rate, there are now 8 billion people in the
+world. It doubles the number of possible IPv4 addresses (and let's
+ignore the fact some billion of IP addresses cannot be even used
+because they're reserved for special use). The reason of why they
+thought 4 billion addresses would be enough is because they assumed no
+one would be stupid enough to have a computer at home.
+
+To solve the problem of the IPv4 address exhaustion was to create
+IPv6, which solved the problem by increasing the maximum number of
+IPv6 addresses to 340 sextillion. This sounds good! And it is!. But
+there's a plot twist.
+
+Men lie, women lie, but the numbers don't. According to Google only
+the 42% of the internet makes IPv6 connections. ipv6-test.com
+estimates that 67% of people have IPv6 connection. At high school I
+had a teacher who said a saying that i have engraved in fire in my
+soul: "There are truths, lies and stadistics". Obviously, ain't no way
+67% of people with access to internet have IPv6. Remember the point of
+IPv6 is to give a *different* IPv6 address to each device. So this
+increment the rate of "IPv6 connected device".
+
+In Spain only the 2% of the population have IPv6. Apparently I'm the
+98% of Spain's population. Because everyone seems to have IPv6 but
+me. I am not going to mention the Ms_Snow_OwO incident[fn:1] because I don't
+want to get mad at people which does not exist again.
+
+You can call me either ambitious or retarded. But if I want something
+I will do whatever I have to get it. I did not have IPv6 at home but I
+wanted it just because. So me and a friend decided to do the most
+ghetto thing ever: To set up a wireguard tunnel with IPv6 and give
+addresses to every Christ in my LAN through SLAAC.
+
+[[../img/evil-laugh.gif]]
+
+Figure 1: Delegao and I negotiating a /56 IPv6 block
+
+So basically I have now two routers. The shit router which the ISP
+gives me and the Raspberry Pi whose only purpose in life is to give
+IPv6 to every Christ in my network. Even when devices do NOT ask for
+an IPv6 address. It will give them anyways.
+
+Setting this thing up was very easy in Linux and impossible to do in
+this shit operating system for people who want to look cool called
+"OpenBSD" (pf is MUUUUUUCH better than this garbage called iptables
+though). Basically all the required software was WireGuard and
+radvd. Literally nothing else. You can use your favorite tunneling
+(open vpn or Cisco™ AnyConnect™) software provided it gives you at
+least a /64 address block.
+
+So once you have your /64 address block in your new router. What you
+have to do is to announce it in your LAN. For this you use radvd. A
+SLAAC server. This is stupidly easy to configure:
+
+#+begin_src conf-space
+  interface eth0 {
+            AdvSendAdvert on;
+            MinRtrAdvInterval 30;
+            MaxRtrAdvInterval 100;
+            prefix 2605:6400:c022:e000::/64 {
+                   AdvOnLink on;
+                   AdvAutonomous on;
+                   AdvRouterAddr off;
+            };
+  };
+#+end_src
+
+This configuration would be enough for the new router to shill the /64
+block to every God in the LAN. After you run =systemctl enable --now
+radvd= every device will get an IPv6 address against its will. But you
+won't be able to surf the most unknown of darknets until you run
+=sysctl -w net.ipv6.conf.all.forwarding=1=. Otherwise you will literally
+not get anywhere in the IPv6 darknet. It's a darknet because no one
+has access to it normally.
+
+Then you can go in any device in your lan to https://ipv6-test.com and
+see how it's going. To see whether you truly have IPv6 or suragu.net
+lied to you.
+
+If you want to do this. I'd recommend getting a VPS server close to
+where you are geographically because despite "The Wired" destroys
+physical borders you still have to get to the server. And if you're in
+Madrid and your IPv6 Wireguard server is in Osaka, you'll first have
+to go to Osaka before you actually get somewhere. Giving it at least
+300ms of latency. So keep that in mind.
+
+But why would someone want IPv6? I don't know. Because I can?
+
+[fn:1]: Basically a twitter person called Ms_Snow_OwO hacked into the
+RIPE account of Orange Spain. Making all their BGP routers
+useless. Despite I'm in favour of the cause. Fuck you Ms_Snow_OwO, I
+had to solve Jiras when you decided to destroy the internet connection
+of an entire country.

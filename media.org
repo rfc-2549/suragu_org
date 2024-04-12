@@ -1,25 +1,25 @@
+
 #+INCLUDE: "inc/header.html" export html
 #+options: toc:nil
 #+OPTIONS: html-postamble:nil
 #+OPTIONS: html-style:nil
 #+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil -:nil
-#+TITLE: suragu.net - Media I've consumed
+#+TITLE: suragu.net - Media que he consumido
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 #+EXPORT_FILE_NAME: media.html
 
 * Media I've consumed
-Well, someone has said, that in this world there are people for
-everything, or "it takes all sorts to make a world", so there must be
-someone interested on the media I consume and what I think about
-it. So here are music albums, movies and similar.
 
-As i'm not a professional rater, I'm not gonna rate them, in numbers,
-i'll just say what I think about the thing and that's it.
+Una vez mi primo me dijo que en este mundo hay gente para
+absolutamente todo, por lo tanto sería justo pensar que hay algún tío
+que encuentre la multimedia que consumido interesante. 
 
-Pssss. You can get some of the media listed [[https://files.suragu.net/][here]]. 
+Yo no soy aquí el fantano, mas que nada porque no soy gilipollas, asi
+que aqui no hay reviews profesionales, porque nuevamente, no soy
+gilipollas.
 
-** Movies
-I love the "guy who think he's cool" cinema.
+
+** Películas
 
 - *Pulp Fiction (1994)*: The movie is stupid, ridicolous and most
   pejorative adjectives you can think of. But it's my favorite movie
@@ -48,74 +48,103 @@ I love the "guy who think he's cool" cinema.
 - *The Godfather (1972):* Masterpiece
 - *Lady Snowblood (1973):* I loved Kill Bill. I loved this even more.
 - *The great lebowski:* Same as fear and loathing in las vegas.
-** Videogames
-Well, now I got a decent computer in which I can play games
-decently. I have completed all the storyline of these games unless
-stated otherwhise.
+  
+** Videojuegos
+Desde que tengo un pepino de ordenador puedo jugar a juegos.
 
-- *Borderlands 2:* One of my favorite games.
-- *Borderlands: The Pre-sequel*: Still playing it
-- *Milk (out|in)side a bag of milk (out|in)side a bag of milk*: Had a [[./img/funny.png][funny frame]]
+- *Borderlands 2:* Buen juego
+- *Borderlands: The Pre-sequel*: No lo acabé nunca
+- *Milk (out|in)side a bag of milk (out|in)side a bag of milk*: Had a
+  [[./img/funny.png][funny frame]]
+- *GTA V* obra de arte
+  
 ** Anime
-I genuinely believe that all anime are garbage. 
-- *Serial Experiments Lain*: The anime is cool. I used to simp for Lain
-  but then I discovered I'm suragu, not a insecure, twitter user
-- *Paranoia Agent*: I remember once a linguistics teacher I had told me
-  to watch this anime. I watched it and I really enjoyed it. A good
-  satire. I have keked big to this one.
-- *Texhnolyze*: Made by the same guys that made Lain. But i enjoyed this
-  one more than Lain
-- *Haibane Renmei*: Made by the same guy as Lain and Texhnolyze, this is
-  the only media that made me cry and i have 0 problems admitting it.
-- *The curse of Kazuo Umezu*: I can't take gore animes seriously
-  because I analyze the situation, which makes me laugh
-  uncontrollably. Altough it was fun to watch.
-- *Shoujo Tsubaki (1992)* : The thing stated above doesn't apply for this
-  one. This one is actually depressing.
-- *Belladonna of Sadness (1973)*: Masterpiece. The Japanese version of
-  Pink Floyd's The Wall. Psychedelic, deep, and weird.
-- *Jigoku Shoujo*: This death note and paranoia agent but with a
-  anime girl instead of a guy with a baseball bat. It also had a
-  [[./img/hell_marijuana.jpg][sublimal message]]
-- *Perfect Blue (1997)*: Psychosis.  
+Yo de verdad pienso que todos los animes son una mierda
+
+- *Serial Experiments Lain*: Buen anime :)))))))))))))))))))
+- *Paranoia Agent*: Una vez un profesor de lengua me dijo que viera este
+  anime porque le dije que me gustó Lain
+- *Texhnolyze*: Mejor que Lain
+- *Haibane Renmei*: Curioso
+- *Belladonna of Sadness (1973)*: Increible, literalmente The Wall anime
+- *Perfect Blue (1997)*: Psicosis
+- *The Boondocks*: I count it as an anime because this is literally
+  Samurai Champloo but Mugen and Jin are black people 
 
 ** Books
-I know how to read
+Se leer
 
 - *Neuromancer (1984)*: A drugaddict hacker needs to make money but he
   can't work because he stole from his bosses.
 
 ** Music
-This shit will never be complete.
+Esto nunca va a estar completo.
 
-a * means that I have a physical copy
+Tengo pelo, no soy crítico de música. Si un álbum está aquí es porque
+es mejor que Whole Lotta Red o mejor que D>E>A>T>H>M>E>T>A>L. Lo cual
+hace que escucharlo sea una buena experiencia.
+
+Un * significa que tengo una copia física
+- *2hollis - 2* Durísimo. Un saludo a mi bro Cirno Whatsapp (cuando
+  quieras te haces la web cabrón)
 - *21 Savage - Savage Mode II*
+- *Anenzephalia - Ephemeral Dawn* No se puede hablar de un álbum de
+  power electronics en una línea.
 - *Alice in Chains - Dirt*  
 - *Alice in Chains - Facelift*
+- *Arpaviejas - La papela*
+- *Arpaviejas - Ladrón de Almas* *Segundo mejor album de punk de este
+  país
+- *Aphex Twin - ...I care because you do** IDM ambiental del bueno.
 - *Big Moe - City of Syrup*
 - *Blue Öyster Cult - Agents of Fortune* Epic
 - *Blue Öyster Cult - Fire of unknown origin*
-- *bôa - Twilight*
+- *bôa - Twilight:* Está MUY bien que digan lo que quieran
+- *Burzum - Burzum & Aske*
+- *Burzum - Filosofem*
+- *Burzum - Hvis lyset tar oss*: mi favorito de Burzum. Como me gustaría
+  que Varg no fuese deficiente mental.
 - *CCR - Pendulum*
+- *c418 - Minecraft volume alpha* Que se puede decir de este album
 - *Chief Keef - Finally Rich*
 - *Chief Keef - The Leek, Vol. 1:* Sounds like Korean Vaporwave
 - *Current 93 - The light is leaving us all* What the hell have I
   listened to.
 - *Beckett - Beckett*: Can perfectly understand why Iron Maiden
   plagiarized this.
+- *Danny Brown - Atrocity exhibition*: Me ha molado mucho el rollo que tiene.
 - *D.R.I. - Crossover* All songs are the same to be honest
 - *D.R.I. - Thrash zone* Cool
+- *Devon Hendryx - The Ghost~Pop tape* 🎵[[./img/guarra_anime_vodka.jpg][Girl you came into my life I
+  missed you so bad]] 🎵
+- *Devon Hendryx - JOECHILLWORLD*
 - *DJ Screw - All screwed up Vol. II*
 - *DJ Screw - 3 N’ The Mornin’ Part One*
 - *DJ Screw - 3 N' The Mornin' Part Two*
 - *DJ Screw - The Legend*
 - *Dr. Octagon - Dr. Octagonecologyst*: Kool Keith is a genius.
 - *Dr. DOOOM - First come, first served*
+- *Death in June - ...But what ends when the symbols shatter?* : El
+  neofolk es una cosa increíble. 
 - *Denzel Curry - Melt my eyez see your future*
-- *Denzel Curry - Imperial*  
+- *Denzel Curry - Imperial*
 - *Envidia Kotxina - Asi en la tierra komo en el zielo*
+- *Echochamber - I'm real, I'm here:* Realmente maravilloso. * (gracias
+  akvvma <3)
+- *Echochamber - Era*: Recompilación de sus anteriores trabajos. Ta
+  bien.
+- *Eskorbuto - anti todo* Mejor album de punk del país
+- *Eskorbuto - demasiados enemigos* Épico
 - *Gospel - The Moon is a Dead world*
+- *Goreshit - Steppa* Me ha gustado bastante, un saludo al marbl
+- *Goreshit - Goretrance 9*
+- *Hachazo - Ganas de guerra:* Buen punk español contempóraneo
+- *Headache - The Head Hurts but the heart knows the truth*, Un placer
+  volver a verte, Don Marbl.
 - *Iron Maiden - Somewhere in time* My favorite album from these dudes
+- *Iron Maiden - Number of the beast*
+- *Iron Maiden - Fear of the dark*
+- *Iron Maiden - Powerslave*
 - *Kanye West - My Beautiful Dark Twisted Fantasy*-
 - *Kanye West - Graduation*
 - *Kanye West - Yeezus*
@@ -125,6 +154,9 @@ a * means that I have a physical copy
 - *Kendrick Lamar - Section.80*
 - *Kendrick Lamar - good kid, m.A.A.d. city:* I listen to this album at night while doing stuff and I like it.
 - *King Geedorah* - Take me to your leader
+- *King Gizzard & The Lizard Wizard - PetroDragonic Apocalypse* Best
+  metal album of 2023
+- *King Gizzard & The Lizard Wizard - Nonagon Infinity*
 - *The Offspring - Smash*: Best 90s albums I do not accept debate. *
 - *The Offspring - Americana* *
 - *Nirvana - Nevermind* *
@@ -134,14 +166,20 @@ a * means that I have a physical copy
 - *Extremoduro - Rock Transgresivo*
 - *Extremoduro - Deltoya* *
 - *Extremoduro - Canciones prohibidas*
-- *Extremoduro - La Ley Innata:* This album made me understand music and
-  changed my life.
+- *Extremoduro - La Ley Innata:* Este álbum me hizo entender la música y
+  cambió mi vida.
+- *Robe - Mayéutica* Literalmente la ley innata 2
+- *RAMLEH - Hole in the heart* No hay palabras para definir esto,
+  escuchatelo.
+- *RAMLEH - Circular Time* Noise rock psicodélico *
 - *Pearl Jam - Ten* *
 - *Pink Floyd - The Dark side of the moon* *
 - *Pink Floyd - Wish you were here* *
 - *Pink Floyd - Animals* Their second best album *
 - *Pink Floyd - The Wall* Their best album *
 - *Pink Floyd - Meddle* *
+- *Pig Destroyer - Prowler in the yard*: Muy bueno para cuando el
+  cercanias es el cercanias
 - *Linkin park - Hybrid theory:* Hard as shit. *  
 - *Living Death - World neuroses* It’s alright
 - *MF DOOM - Operation Doomsday*
@@ -155,6 +193,9 @@ a * means that I have a physical copy
 - *Guadalquivir - Camino del concierto*
 - *Manglis - Escalera al cielo* Please listen to Manglis
 - *Manglis - Dandy*
+- *Mayhem - Deathcrush*
+- *Mayhem - Live in Leipzig*
+- *Mayhem - De Mysteriis Dom Sathanas*
 - *Manteca - Bailando con cabras*
 - *Manglis Compás Machine - Mandala* Legends says that this album cover
   was stolen from a Russian website by Luis Cobo "Manglis" during the
@@ -177,19 +218,113 @@ a * means that I have a physical copy
 - *Neutral Milk Hotel - In the airplane over the sea:* Dude please learn how to sing.
 - *Scattle - Backup*
 - *Scattle - Visitors*
+- *SpaceGhostPurrp - BLACKLAND RADIO 66.6*
+- *SpaceGhostPurrp - Dark Angels*
+- *SpaceGhostPurrp - NASA: The Mixtape*
+- *Skullflower - IIIrd gatekeeper*
+- *Posthuman - Atmósferas artificiales** Me encontré este CD en mi casa
+  precintado. Lo escuche y me gustó bastante, le pregunté a mi madre
+  por él y es lore.
+- *PANCHIKO - D>E>A>T>H>M>E>T>A>L*: Shoegaze genérico sobrevalorado. Si
+  no tuviese una chica anime de portada no lo escucharía nadie.
 - *TOOL - Lateralus*
+- *JPEGMAFIA - Black Ben Carson* "Death Grips can't do this, bitch"
 - *JPEGMAFIA - SCARING THE HOES*: Album of the year.
 - *JPEGMAFIA - Veteran* Schizophrenia. Interesting subgenre of hip hop.
+- *JPEGMAFIA - All my heroes are cornballs* Va durísimo
+- *Venetian Snares - Detrimentalist*
+- *Venetian Snares - Rossz Csillag Alatt Született*
+- *Venetian Snares - Thank you for your consideration*
+- *Venetian Snares - Songs about my cats* A mi gato (véase el logo del
+  sitio) le gusta este álbum no irónicamente. A veces se sienta a
+  escucharlo.
 - *Viktor Vaughn - Vaudeville Villain*
 - *Wu-Tang Clan - Enter the Wu-Tang*
+- *Worldgrinder - Echochamber* Canciones cortas pero buenos beats.
+- *Windows96: - One Hundred Mornings*.
 - *Zabutom - Zeta force*
 - *cLOUDEAD - cLOUDEAD*
-- *death’s dynamic shroud.wmv - I’ll try living like this*: Used to love it. Now it gives me anxiety.
+- *death’s dynamic shroud.wmv - I’ll try living like this*
 - *smashing pumpkins - mellon collie and the infinite sadness:* My
   mother likes it
 - *S.O.D. - Speak English or Die*
-- *Slowdive - Souvlaki* >/shoegaze/
+- *Slowdive - Souvlaki* />shoegaze/
 - *suicideboys - I want to die in new orleans* *
-- *わたしのココ - カラダは正直:* I was told by my friend that this was noise, I thought noise was about making music breaking plates and  stuff. Album was good.
-- *ミドリ - あらためまして、はじめまして、ミドリです:* Pictures schizophrenia pretty well.
+- *suigetsu - ethereal kid* Buen ambient
+- *Survival Unit - Fentanyl Martyrs* Cuando estás enfadado el power
+  electronics entra solo.
+- *わたしのココ - カラダは正直:* I was told by my friend that this was
+  noise, I thought noise was about making music breaking plates and
+  stuff. Album was good.
+- *ミドリ - あらためまして、はじめまして、ミドリです*:* El CD venia con
+  un póster y el póster en cuestión es la portada del álbum pero en
+  plan completa y jodidamente grande. Era tan grande que el escaner
+  se quedó pequeño. El álbum es Jazz Punk esquizofrénico, está muy
+  bien.
+- *Mass of the fermenting dregs -  ワールドイズユアーズ*: Un día
+  estabamos todos los chavales escuchando este album y el ordenador
+  como era una mierda se colgó, haciendo que una canción entrese en
+  bucle, el tema es que se habia colgado de una forma en la que nunca
+  se salía del compás, tardamos 15 minutos en darnos cuenta que el
+  ordenador se había colgado y llevabamos 15 minutos escuchando el
+  mismo compás.
+- *輕描淡寫 - 小​圈​子*
+- *輕描淡寫 -  眼泪含泪*
   
+#+begin_export html
+<b style="color:red;">ESTO NO ES MÚSICA OTAKU!</b>
+#+end_export
+
+- *Kan Mikami -   ひらく夢などあるじゃなし* Puede ser lo mejor que
+  haya salido de Japón
+- *Kan Mikami* - The World of Kan Mikami  
+- *Yoshiko Sai - Taiji no yume* Album loco con características de
+  flamenco, la leyenda dice que la autora fue la novia que invitó a El
+  Pelos 4 porros.
+- 梶 芽衣子 - 梶芽衣子のはじき詩集 - Buen album, usado en Lady
+  Snowblood, luego calcada por Kill Bill, pero oye el álbum es
+  maravilloso y esas dos pelis también.
+- *Yoshiko Sai - Mangekyou*
+- 戸川純 - 玉姫様: Menos mal que existe mierda como esta de verdad lo
+  digo.
+- *THE STALIN* - Stop Jap  
+- *Boris - Flood:* De "bro esto que es" a pink floyd a noise a "bro esto
+  que es". Experiencia legendaria, un album muy recomendable.
+- *Boris - Akuma no Uta*
+- *Boris - Dronevil*
+- *Kan Mikami & Hijokaidan - Mikamikaidan*: :^), simplemente. :^)
+- *Maki Asakawa - Rear Window*
+- *Hako Yamasaki - Indigo Poetry*
+- *Carmen Maki - Poems in the midnight*: Me gusta mucho los interludios
+  hablados.
+- *Doji Morita - A boy* La guitarra muy buena y la voz increíble
+    
+#+begin_export html
+<p><b style="color:white;">EBIN MUSIC </b><b style="color:blue;">:DDDDDDDDDDD</b></p>
+#+end_export
+Tras escuchar música finlandesa he llegado a la conclusión de que esta
+gente está petada de la putísima cabeza.
+
+- *Barathrum - Hailstorm* Mas complicado de escuchar siendo honestos
+- *Clandestine Blaze - Tranquility of dead:* La canción homonima es una maravilla x--D
+- *Forgjord - Ajasta Ikuisuuteen* Metal gondola realmente xDDDD
+- *Horna - Ääniä Yössä* xDDDDD
+- *Nekrokrist SS - Neljän Käärmeen Veljeskunta* El berdadero esbando putas :DDDDDDDDD
+- *SIELNUVIHOLLINEN - Kuolonkylväjä* :---DDDDD
+- *Sargeist - Let the devil in* Ebin riffs :-DDDD
+- *Satanic Warmaster - Carelian Satanist Maddness* :D :D :---
+
+#+begin_export html
+<b style="color:white;">Cosas apuntadas que eventualmente me escucharé, y si las tengo aquí se me olvidarán menos, me gustaría pensar</b>
+#+end_export
+- Death Grips - Exmilitary
+- SpaceGhostPurrp - Intoxxxicated
+- Black Metal Finlandés x-DDD :DDDDDDDDD
+- Noise Finlandés :------D :D :D :-D
+- JPEGMAFIA - Communist Slow Jams
+- Punk de por ahí
+- Lo de Whitehouse, aún no he decaido tanto mentalmente pero a poco
+  estoy.
+- Lo de Taller de Concreto.
+
+  Sitio generado el {{{time(%Y-%m-%d a las %H:%M)}}}

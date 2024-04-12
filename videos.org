@@ -1,0 +1,30 @@
+#+INCLUDE: "inc/header.html" export html
+#+options: toc:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: html-style:nil
+#+OPTIONS: num:nil p:nil pri:nil stat:nil tags:nil tasks:nil tex:nil timestamp:nil toc:nil title:nil ^:nil
+#+TITLE: SURAGU -- Videos
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+#+HTML_HEAD_EXTRA: <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+#+EXPORT_FILE_NAME: videos.html
+
+* Encontré estos vídeos en mi ordenador
+** Como liar un porro
+#+begin_export html
+<video with="320" height="240" controls >
+<source src="vid/como_liar_un_porro.mp4" type="video/mp4">
+&gt;His browser does not support audio
+</video>
+#+end_export 
+
+No sé cuando cojones grabe este vídeo pero lo he visto esta mañana y
+he pensado esto que cojones es y ahora lo subo aqui
+** Como entubar un cigarro
+#+begin_export html
+<video with="320" height="240" controls >
+<source src="vid/como_entubar_un_piti.mp4" type="video/mp4">
+&gt;His browser does not support audio
+</video>
+#+end_export 
+
+Un video para entubar un piti

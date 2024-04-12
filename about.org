@@ -7,39 +7,55 @@
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 #+EXPORT_FILE_NAME: about.html
 
-* About
+* Acerca de
 
-** About the person
+** Sobre la persona
+#+begin_export html
+<ruby>修羅具<rt>スラグ</rt></ruby>: <p>lit. "Herramienta para luchar contra los dioses.". o como una
+	herramienta para luchar contra todo lo que alguna vez nos han contado y llegar a ser el
+Ultrahombre. O convertirte en tu propio dios</p>
+#+end_export
+Por qué estás leyendo esto? No soy tan interesante, soy un tío que
+hace blogposts y software. Tú también puedes hacer eso.
 
-Why are you reading this? I'm not that interesting, i'm just a guy who
-writes blogposts and software. You can do that too. Stop caring so
-much about others and start caring about yourself.
+[[./keys.txt][Claves PGP y SSH]]
 
-[[./keys.txt][pgp & ssh keys]]
-
-
-** Projects
-Some projects I have worked on are [[https://git.suragu.net/sosa/sakisafe.git][sakisafe]], a simple file sharing
-program and it's terminal interface. The source code of my blog is
-available at [[https://git.suragu.net/sosa/the_pit.git][the_pit]]
 
 ** Hotlinking
 
-if you feel like sharing this website without anything in return, you
-can use one the following banners:
+Si quieres hacerle publicidad a este sitio web sin recibir nada a
+cambio puedes usar los siguientes banners: 
 
-[[./img/banner_suragu.png]] [[./img/banner_suraguchan.png]]
+[[./img/banner_suragu.png]] [[./img/banner_suraguchan.png]] [[./img/banner_lain_evolution.png]]
 
-** About the site
-Everytime i'm bored and i think about something, i put it in this
-website so they can make a wikipedia article about me. So the content
-to expect is literally anything I come up with.
+** Sobre el sitio
 
-*** Credits
-- Me for doing most of the stuff.
-- [[https://instagram.com/vatonagge][Machukovich]] for creating the site logo.
-- [[https://akvvma.xyz][akvvma]] for help in creating content.
-- Endemic for giving ideas and spitting facts.
-- Gab for reading everything before publishing.
-- Everyone else who served as inspiration.
+Cada vez que estoy aburrido y pienso algo interesante lo escribo aquí
+para que puedan hacer un artículo de Wikipedia sobre mi. Por lo tanto
+el contenido es literalmente cualquier cosa que se me ocurra
+
+Para referirse a SURAGU como sitio web, se estiliza con todo
+mayúsculas. Para referirse a suragu como concepto se estiliza con todo
+minúsculas.
+*** Créditos
+- Yo por hacer la mayoría de las cosas
+- [[https://delegao.moe][Delegao]] por hacer que El Internet funcione y por ser un joven
+  concienciado con la implementación global de IPv6
+- [[https://instagram.com/vatonagge][Machukovich]] por hacer el logo del sitio y ser coautor
+- [[https://akvvma.xyz][akvvma]] por ayudar a crear contenido
+- Endemic por dar ideas y escupir factores y ser el Endemic
+- Gab por leer todo
+- [[https://aorivoid.net][aorivoid]] por decir cosas graciosas.
+- [[https://dendy.fai.st][Dendy]] por despertarme del letargo lingüistico en el que estaba
+  inmerso. (y bastante mas)
+- ekorokoté por droppearme en mi casa cuando estoy borracho de cojones.
+- El resto de gente que ha servido como inspiración
   
+
+** TTYMAFIA
+Los webrings me comen la polla, excepto mis bros
+
+#+begin_export html
+<a href="https://aorivoid.net"><img src="/img/buttons/aorivoid.png" title="aorivoid.net"
+alt="aorivoid"/></a>
+#+end_export 
